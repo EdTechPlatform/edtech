@@ -12,7 +12,7 @@ app.use(express.json())
 app.use("/users", userRoutes)
 
 const PORT = process.env.PORT || 5000;
-const MONGOOSE_URL = "mongodb://localhost:27017/EdTech"
+const MONGOOSE_URL = "mongodb://0.0.0.0:27017/EdTech"
 
 mongoose.connect(MONGOOSE_URL, {useNewUrlParser: true})
 .then(()=> app.listen(PORT, ()=>{
@@ -21,3 +21,32 @@ mongoose.connect(MONGOOSE_URL, {useNewUrlParser: true})
 .catch(err=>{
     console.log(err)
 })
+
+//Register API....//
+require("./models/user");
+const User = mongoose.model("User");
+app.put("/register", async (req, res) => {
+  const {email, dob, gender, address1, address2, city, state, pin, country, phone} = req.body;
+
+  try {
+     //const oldUser = await User.findOne({ email });
+
+    await User.updateOne(
+    {email},
+    {$set:{
+      dob,
+      gender,
+      address1,
+      address2,
+      city,
+      state,
+      pin,
+      country,
+      phone,
+    }},
+    );
+    res.send({ status: "ok" });
+  } catch (error) {
+    res.send({ status: "error" });
+  }
+});
