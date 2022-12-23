@@ -1,13 +1,15 @@
-import * as actionType from '../const/actionsTypes';
+import * as actionType from "../const/actionsTypes";
 
 const authReducer = (state = { authData: null }, action) => {
   switch (action.type) {
     case actionType.AUTH:
-      localStorage.setItem('user_info', JSON.stringify({ ...action?.data }));
-      console.log(action.data)
+      localStorage.setItem("user_info", JSON.stringify({ ...action?.data }));
+      console.log("userDeatils : ", action.data);
+      localStorage.setItem("email", ( action.data.result.email ));
+
       return { ...state, authData: action.data };
     case actionType.LOGOUT:
-      localStorage.clear();
+      localStorage.clear("user_info", "email");
 
       return { ...state, authData: null };
     default:
