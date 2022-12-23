@@ -31,7 +31,7 @@ export const signupGoogle = (accessToken, navigate) => async (dispatch) => {
 
     const { data } = await api.signUpGoogle(accessToken);
     dispatch({ type: AUTH, data });
-    navigate("/");
+    navigate("/account/register");
   } catch (err) {
     
 

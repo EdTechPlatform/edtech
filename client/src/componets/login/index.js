@@ -4,6 +4,7 @@ import LoginStyles from "./Login.module.css";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useDispatch } from "react-redux";
 import { signinGoogle } from "../../redux/actions/auth";
+import Nav from "../nav";
 
 function Login() {
 
@@ -21,6 +22,8 @@ function Login() {
    
 
   return (
+    <>
+    <Nav/>
     <div className={LoginStyles.loginContainer}>
       <div className={LoginStyles.loginContainerv2}> 
         <button onClick={() => login()} className={LoginStyles.googleBTN}>
@@ -28,6 +31,8 @@ function Login() {
         </button>
       </div>
     </div>
+    </>
+    
   );
 }
 
