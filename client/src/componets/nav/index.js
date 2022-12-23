@@ -1,6 +1,6 @@
 import React from "react";
 import NavStyles from "./Nav.module.css";
-import { Link, useNative, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
