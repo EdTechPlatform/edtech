@@ -4,7 +4,8 @@ import Home from "./componets/home";
 import Login from "./componets/login";
 import Signup from "./componets/signup";
 import Profile from "./componets/userProfile";
-import Register from "./componets/register/Index";
+import Register from "./componets/register/index";
+import TutoriaTrack from "./componets/tutorialTrack/index.js"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/account/signup" element={<Signup />} />
         <Route path="/account/profile" element={<Profile />} />
         <Route path="/account/register" element={<Register />} />
+        <Route path="/account/tutorial" element={<TutoriaTrack/>} />
       </Routes>
     </div>
   );
