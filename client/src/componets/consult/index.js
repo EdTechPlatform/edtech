@@ -39,9 +39,9 @@ function index() {
             <div class="Module-body">
               <h5 class="Module-title"><strong>{track.title}</strong></h5>
               <img src={Image} alt="" style={{height:"100px"}}/>
-              <p class="Module-text">
+              <a href="/"><p class="Module-text">
                 {track.content}
-              </p>
+              </p></a>
             </div>
             
           </div>
