@@ -12,7 +12,7 @@ function index() {
         </a>
       </div>
       <div className="cards">
-      {Tutorial.map((tutorial) => {
+      {Tutorial && Tutorial.map((tutorial) => {
         return (
           <div class="card" key={tutorial.id}>
             <div class="card-body">
