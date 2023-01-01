@@ -8,6 +8,7 @@ import Register from "./componets/register/index";
 
 import TutoriaTrack from "./componets/tutorialTrack/index.js";
 import Consult from "./componets/consult/index.js";
+import VideoPlayer from "./componets/videoplayer";
 
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
         <Route path="/account/profile" element={<Profile />} />
         <Route path="/account/register" element={<Register />} />
         <Route path="/account/tutorial" element={<TutoriaTrack/>} />
-        <Route path="/account/consult" element={<Consult/>} />
+        <Route path="/account/tutorial/consult" element={<Consult/>} />
+        <Route path="/account/tutorial/consult/course" element={<VideoPlayer/>} />
       </Routes>
     </div>
   );
