@@ -19,6 +19,7 @@ router.post("/signup", signupController);
 //Register API....//
 
 router.post("/register", fetchuser, async (req, res) => {
+  // const emailId = req.email;
   const emailId = req.email;
 
   const { dob, gender, address1, address2, city, state, pin, country, phone } =
@@ -45,7 +46,6 @@ router.post("/register", fetchuser, async (req, res) => {
     );
     const user = await User.findOne({ email: emailId });
     res.json({ success: true, message: user });
-    // res.send({ status: "ok" });
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Some Internal Server Error");

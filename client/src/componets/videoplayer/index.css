@@ -10,7 +10,7 @@
     box-sizing: border-box;
 }
 
-body {
+/* body {
     min-height: 100vh;
     
     font-family: sans-serif;
@@ -18,7 +18,7 @@ body {
 
     display: flex;
     align-items: center;
-}
+} */
 
 .container {
     width: 100vw;

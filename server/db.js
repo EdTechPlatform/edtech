@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const mongostr = "mongodb://0.0.0.0:27017/EdTech";
+const mongostr = "mongodb://localhost:27017/EdTech";
 
 const connectToMongo = () => {
   mongoose.connect(mongostr, () => {
