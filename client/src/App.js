@@ -1,10 +1,10 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./componets/home";
+import Home from "./componets/home/index";
 import Login from "./componets/login";
 import Signup from "./componets/signup";
 import Profile from "./componets/userProfile";
-import Register from "./componets/register/Index";
+import Register from "./componets/register/index";
 
 function App() {
   return (
