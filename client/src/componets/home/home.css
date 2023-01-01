@@ -1,0 +1,25 @@
+
+.home{
+    margin-top: 20px;
+    margin-left: 70px;
+    margin-right: 70px;
+    
+}
+
+.home_video{
+    float:left;
+    width: 50%;
+    padding-bottom: 27px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  @media screen and (max-width: 500px) {
+    .home_video {
+      width: 100%;
+    }
+  }
+
+img{
+    height: 300px;
+}
