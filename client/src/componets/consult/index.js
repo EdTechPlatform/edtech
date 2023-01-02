@@ -38,10 +38,16 @@ function index() {
           <div class="Module" key={track.id}>
             <div class="Module-body">
               <h5 class="Module-title"><strong>{track.title}</strong></h5>
-              <img src={Image} alt="" style={{height:"100px"}}/>
-              <a href="/"><p class="Module-text">
+              <img className="Module-img" src={Image} alt=""/>
+              <div  class="Module-text">
+              <a href="/"><p>
                 {track.content}
-              </p></a>
+              </p> <p> (Click to open the video)</p></a>
+             
+              </div>
+              <img className="Module-img" src={Image} alt=""/>
+              <div className='Module-circle'></div>
+              <img className="Module-img" src={Image} alt=""/>
             </div>
             
           </div>
