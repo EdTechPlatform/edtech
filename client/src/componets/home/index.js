@@ -2,7 +2,7 @@ import React from 'react';
 import Record_home from "./record_home.json";
 import './home.css' ;
 
-const index = () => {
+function index() {
   return (
     
      <div className="home">
