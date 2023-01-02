@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Tutorial from "./tutorial.json";
 import "./index.css";
 
@@ -20,9 +21,9 @@ function index() {
               <p class="card-text">
                 {tutorial.content}
               </p>
-              <a href="/" class="btn btn-primary" >
+              <Link to={tutorial.path} class="btn btn-primary" >
                 Start Learning
-              </a>
+              </Link>
             </div>
           </div>
         );

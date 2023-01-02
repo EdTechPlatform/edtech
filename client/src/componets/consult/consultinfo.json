@@ -2,11 +2,13 @@
     {
         "id":1,
        "title":"Complete Consult Interview Course",
-       "content":"Carrer tutorial Information and Brief"
+       "content":"Carrer tutorial Information and Brief",
+       "video":""
     },
     {
         "id":2,
-        "title":"Complete Consult Interview Course",
-        "content":"Carrer tutorial Information and Brief"
+        "video": "./assets/videoimg.jpg",
+        "title": "",
+        "content": ""
     }
 ]

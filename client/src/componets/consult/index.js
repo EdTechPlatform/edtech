@@ -15,7 +15,7 @@ function index() {
     <div className='cards'>
          {Consult && Consult.map((consult) => {
         return (
-          <div class="card" key={consult.id}>
+          <div class="card" key={consult.id} >
             <div class="card-body">
               <h5 class="card-title" style={{paddingBottom:"60px"}}><strong>{consult.title}</strong></h5>
               <p class="card-text">
@@ -29,6 +29,7 @@ function index() {
         );
       })}
     </div>
+    
     <div className='box'>
         <h4>Tutorial Track</h4>
     </div>
