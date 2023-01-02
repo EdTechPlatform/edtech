@@ -68,7 +68,7 @@ class NavBar extends React.Component{
                   <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                   <button className="btn btn-outline-light" type="submit">Search</button>
                 </form>
-                <button type="button" class="btn btn-primary">Login</button>
+                <button type="button" class="btn btn-primary">Sign In</button>
               </div>
             </div>
           </nav>

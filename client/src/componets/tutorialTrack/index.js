@@ -8,9 +8,9 @@ function index() {
     <div>
       <div className="header">
         <h1 style={{display:"inline"}}><strong>Pick a Track</strong></h1>
-        <a href="/" class="btn btn-primary" style={{paddingRight:"50px",paddingLeft:"50px", float:"right", display:"inline"}}>
+        {/* <a href="/" class="btn btn-primary" style={{paddingRight:"50px",paddingLeft:"50px", float:"right", display:"inline"}}>
         Sign In
-        </a>
+        </a> */}
       </div>
       <div className="cards">
       {Tutorial && Tutorial.map((tutorial) => {

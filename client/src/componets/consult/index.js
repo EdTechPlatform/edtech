@@ -7,11 +7,11 @@ import Image from "./arrow-down.png"
 function index() {
   return (
     <>
-    <div className="SignInBtn">
+    {/* <div className="SignInBtn">
         <a href="/" class="btn btn-primary" style={{paddingRight:"50px",paddingLeft:"50px", float:"right", display:"inline"}}>
         Sign In
         </a>
-      </div>
+      </div> */}
     <div className='cards'>
          {Consult && Consult.map((consult) => {
         return (
