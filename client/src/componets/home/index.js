@@ -1,14 +1,21 @@
 import React from 'react';
-import Nav from '../nav';
-import Home from './home' ;
+import Record_home from "./record_home.json";
+import './home.css' ;
 
 const index = () => {
   return (
-    <>
-    <Nav/>
-    <div>this is home</div>
-    <Home/>
-    </>
+    
+     <div className="home">
+        {Record_home &&
+          Record_home.map((record) => {
+            return (
+              <span className="home_video" key={record.id}>
+                <img src={record.source} alt="" />
+              </span>
+            );
+          })}
+      </div>
+    
   )
 }
 
