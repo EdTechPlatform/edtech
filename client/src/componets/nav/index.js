@@ -1,5 +1,4 @@
 import React from "react";
-import NavStyles from "./Nav.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { useEffect, useState } from "react";
@@ -9,9 +8,24 @@ import { LOGOUT } from "../../redux/const/actionsTypes";
 function Nav(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const [authenticated, setAuthenticated] = useState(false);
+  const [usercred, setUserCred] = useState([]);
+
+  const userdeatils = async () => {
+    const response = await fetch("http://localhost:5000/users/getuser", {
+      method: "GET",
+      headers: {
+        jToken: localStorage.getItem("jToken"),
+      },
+    });
+    const json = await response.json();
+    console.log({ userdata: json });
+    setUserCred(json);
+  };
 
   useEffect(() => {
+    userdeatils();
     if (props.auth.authData) {
       setAuthenticated(true);
     } else {
@@ -24,63 +38,136 @@ function Nav(props) {
 
     dispatch({ type: LOGOUT });
     navigate("/");
-
   }
+
   return (
-    <nav className={NavStyles.mainNav}>
-      <div>
-        <h3>
-          <Link className={`d-block ${NavStyles.linkBTN}`} to="/">
-            EdTech
-          </Link>
-        </h3>
-      </div>
-      <div>
-        {authenticated ? (
-          <div className={NavStyles.rightSideNav}>
-            <i className="fa-solid fa-user"></i>
-            <div>
-              <span className="d-blcok">Account</span>
-              <div className={NavStyles.container2}>
-                <Link
-                  className={`d-block ${NavStyles.linkBTN}`}
-                  to="/account/profile"
-                >
-                  Profile
-                </Link>
-                <span className={NavStyles.or}>or</span>
-                <Link
-                  onClick={handleLogOut}
-                  className={NavStyles.linkBTN}
-                  to="/"
-                >
-                  Logout
-                </Link>
-              </div>
+    <>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <Link className="navbar-brand" to="/">
+          EdTech
+        </Link>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item active">
+              <Link className="nav-link" to="/">
+                Home <span className="sr-only">(current)</span>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/account/tutorial"
+                className="nav-link"
+                aria-current="page"
+              >
+                Tutorials
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/account/testroute"
+                className="nav-link"
+                aria-current="page"
+              >
+                Resources
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/account/testroute"
+                className="nav-link"
+                aria-current="page"
+              >
+                Community
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/account/testroute"
+                className="nav-link"
+                aria-current="page"
+              >
+                P2P_Mock
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/account/testroute"
+                className="nav-link"
+                aria-current="page"
+              >
+                Events
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/account/testroute"
+                className="nav-link"
+                aria-current="page"
+              >
+                Competitions
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/account/testroute"
+                className="nav-link"
+                aria-current="page"
+              >
+                Career_Roadmap
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div
+          className=" d-flex flex-row-reverse me-4"
+          id="navbarSupportedContent"
+        >
+          {authenticated ? (
+            <div className="dropdown">
+              <button
+                className="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Hello {usercred.firstName}
+              </button>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                <li>
+                  <Link
+                    className="nav-link"
+                    aria-current="page"
+                    to="/account/profile"
+                  >
+                    Profile
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    onClick={handleLogOut}
+                    className="nav-link"
+                    aria-current="page"
+                    to="/"
+                  >
+                    Logout
+                  </Link>
+                </li>
+              </ul>
             </div>
-          </div>
-        ) : (
-          <div className={NavStyles.rightSideNav}>
-            <i className="fa-solid fa-user"></i>
-            <div>
-              <span className="d-blcok">Account</span>
-              <div className={NavStyles.container2}>
-                <Link
-                  className={`d-block ${NavStyles.linkBTN}`}
-                  to="/account/login"
-                >
-                  Login
-                </Link>
-                <span className={NavStyles.or}>or</span>
-                <Link className={NavStyles.linkBTN} to="account/signup">
-                  Singup
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-    </nav>
+          ) : (
+            <button className="nav-item">
+              <Link className="nav-link" to="/account/login">
+                Sign in
+              </Link>
+            </button>
+          )}
+        </div>
+      </nav>
+    </>
   );
 }
 

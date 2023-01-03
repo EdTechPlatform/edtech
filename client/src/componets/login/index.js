@@ -1,10 +1,10 @@
 import React from "react";
-import {  useNavigate } from "react-router-dom";
+import {  useNavigate,Link } from "react-router-dom";
 import LoginStyles from "./Login.module.css";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useDispatch } from "react-redux";
 import { signinGoogle } from "../../redux/actions/auth";
-import Nav from "../nav";
+// import Nav from "../nav";
 
 function Login() {
 
@@ -19,20 +19,25 @@ function Login() {
   }
   const login = useGoogleLogin({ onSuccess: handleGoogleLoginSuccess });
 
-   
+  
 
   return (
     <>
-    <Nav/>
-    <div className={LoginStyles.loginContainer}>
-      <div className={LoginStyles.loginContainerv2}> 
-        <button onClick={() => login()} className={LoginStyles.googleBTN}>
-          <i className="fa-brands fa-google"></i> Sign in with google
-        </button>
+      <div className={LoginStyles.loginContainer}>
+        <div className={LoginStyles.loginContainerv2}>
+          <h1>Welcome back</h1>
+          <button onClick={() => login()} className={LoginStyles.googleBTN}>
+            <i className="fa-brands fa-google"></i> Sign in with google
+          </button>
+          <span className={LoginStyles.notreg}>
+            Not registered yet?{" "}
+            <Link className={LoginStyles.singupBTN} to="/account/signup">
+              Signup
+            </Link>
+          </span>
+        </div>
       </div>
-    </div>
     </>
-    
   );
 }
 

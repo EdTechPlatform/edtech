@@ -24,7 +24,7 @@ const navigate = useNavigate();
         "Content-Type": "application/json",
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
-        email: localStorage.getItem("email"),
+       jToken: localStorage.getItem("jToken"),
       },
       body: JSON.stringify({
         dob: dob,
