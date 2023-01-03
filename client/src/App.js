@@ -11,7 +11,6 @@ import VideoPlayer from "./componets/videoplayer";
 // import Nav from "./componets/nav"
 import TestRoute from "./componets/testRoute"
 
-
 function App() {
   return (
     <div className="App">

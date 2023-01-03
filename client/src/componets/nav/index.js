@@ -9,7 +9,6 @@ function Nav(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [authenticated, setAuthenticated] = useState(false);
   const [usercred, setUserCred] = useState([]);
 
   const userdeatils = async () => {
@@ -26,12 +25,7 @@ function Nav(props) {
 
   useEffect(() => {
     userdeatils();
-    if (props.auth.authData) {
-      setAuthenticated(true);
-    } else {
-      setAuthenticated(false);
-    }
-  }, [props.auth]);
+  }, []);
 
   function handleLogOut(e) {
     e.preventDefault();
@@ -50,7 +44,7 @@ function Nav(props) {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
               <Link className="nav-link" to="/">
-                Home <span className="sr-only">(current)</span>
+                Home
               </Link>
             </li>
             <li className="nav-item">
@@ -122,7 +116,7 @@ function Nav(props) {
           className=" d-flex flex-row-reverse me-4"
           id="navbarSupportedContent"
         >
-          {authenticated ? (
+          {localStorage.getItem("jToken") ? (
             <div className="dropdown">
               <button
                 className="btn btn-secondary dropdown-toggle"
