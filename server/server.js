@@ -9,6 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/users", require("./routes/userRoutes"));
+app.use("/admin", require("./routes/adminRoutes.js"));
 
 const PORT = process.env.PORT || 5000;
 
