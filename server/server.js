@@ -10,6 +10,7 @@ app.use(express.json());
 
 app.use("/users", require("./routes/userRoutes"));
 app.use("/admin", require("./routes/adminRoutes.js"));
+app.use("/edcourse", require("./routes/courseRoutes.js"));
 
 const PORT = process.env.PORT || 5000;
 
