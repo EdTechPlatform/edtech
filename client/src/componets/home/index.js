@@ -6,7 +6,8 @@ import Nav from '../nav'
 function index() {
   return (
     <>
-      <Nav/>
+    <div>
+    <Nav/>
      <div className="home">
         {Record_home &&
           Record_home.map((record) => {
@@ -17,6 +18,8 @@ function index() {
             );
           })}
       </div>
+    </div>
+      
     </>
   )
 }
