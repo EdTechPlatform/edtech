@@ -7,9 +7,9 @@ import Nav from "../nav";
 function index() {
   return (
     <>
-      <Nav/>
+      <Nav />
       <div className="header">
-        <h1 style={{ display: "inline" }}>
+        <h1>
           <strong>Pick a Track</strong>
         </h1>
       </div>
