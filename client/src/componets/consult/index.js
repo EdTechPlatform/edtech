@@ -4,12 +4,10 @@ import Consult from "./consultinfo.json";
 import "./consult.css";
 import ConsultTrack from "./consultTrack.json";
 import Image from "./arrow-down.png";
-import Nav from "../nav";
 
 function index() {
   return (
     <>
-      <Nav />
       <div className="cards">
         {Consult &&
           Consult.map((consult) => {

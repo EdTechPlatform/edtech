@@ -8,13 +8,13 @@ import Register from "./componets/register/index";
 import TutoriaTrack from "./componets/tutorialTrack/index.js";
 import Consult from "./componets/consult/index.js";
 import VideoPlayer from "./componets/videoplayer";
-// import Nav from "./componets/nav"
+import Nav from "./componets/nav"
 import TestRoute from "./componets/testRoute"
 
 function App() {
   return (
     <div className="App">
-      {/* <Nav/> */}
+      <Nav/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/account/login" element={<Login />} />
