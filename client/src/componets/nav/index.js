@@ -130,6 +130,7 @@ function Nav(props) {
                 id="dropdownMenuButton1"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
+                style={{background:"rgb(24 106 255)", paddingLeft:"20px", paddingRight:"20px", borderRadius:"50px"}}
               >
                 Hello {usercred.firstName}
               </button>
@@ -161,7 +162,7 @@ function Nav(props) {
               </ul>
             </div>
           ) : (
-            <button className="nav-item">
+            <button className="nav-item" style={{background:"rgb(24 106 255)", paddingLeft:"10px", paddingRight:"10px", borderRadius:"50px"}}>
               <Link className="nav-link" to="/account/login">
                 Sign in
               </Link>

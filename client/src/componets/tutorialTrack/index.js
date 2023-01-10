@@ -2,12 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Tutorial from "./tutorial.json";
 import "./index.css";
-import Nav from "../nav";
 
 function index() {
   return (
     <>
-      <Nav />
       <div className="header">
         <h1>
           <strong>Pick a Track</strong>
