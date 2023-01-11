@@ -21,17 +21,12 @@ const moduleSchema = new mongoose.Schema(
   {
     moduleName: {
       type: String,
-      trim: true,
-      minlength: 3,
-      maxlength: 320,
-      required: true,
-      unoque: true,
     },
-    moduleNumber: { type: Number, required: true, unoque: true },
-    moduleSlug: {
-      type: String,
-      lowercase: true,
-    },
+    moduleNumber: { type: Number, required: true},
+    // moduleSlug: {
+    //   type: String,
+    //   lowercase: true,
+    // },
     moduleDescription: { type: String },
 
     videos: [videoSchema],
@@ -43,11 +38,11 @@ const portfolioSchema = new mongoose.Schema(
   {
     portfolioName: {
       type: String,
-      trim: true,
-      minlength: 3,
-      maxlength: 320,
-      required: true,
-      unique: true,
+      // trim: true,
+      // minlength: 3,
+      // maxlength: 320,
+      // required: true,
+      // unique: true,
     },
     portfolioSlug: {
       type: String,

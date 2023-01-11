@@ -26,7 +26,7 @@ const createPortfolio = async (req, res) => {
     const portfolio = await new Portfolio({
       portfolioName,
       portfolioDescription,
-      portfolioSlug: slugify(req.body.portfolioName),
+      portfolioSlug,
       portfolioCreator: useremail,
     }).save();
 
@@ -64,7 +64,7 @@ const getmodule = async (req, res) => {
 // Add a new module
 const addmodule = async (req, res) => {
   const { moduleName, moduleNumber, moduleDescription } = req.body;
-  const moduleSlug = slugify(req.body.moduleName);
+  // const moduleSlug = slugify(req.body.moduleName);
   const useremail = req.email;
   try {
     const portfolioSlug = req.params.portfolioSlug;
@@ -83,7 +83,7 @@ const addmodule = async (req, res) => {
         moduleName,
         moduleNumber,
         moduleDescription,
-        moduleSlug,
+        // moduleSlug,
       };
       const result = await Portfolio.findOneAndUpdate(
         { portfolioSlug },
