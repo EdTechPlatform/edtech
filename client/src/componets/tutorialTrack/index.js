@@ -1,29 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Tutorial from "./tutorial.json";
 import "./index.css";
-import Nav from "../nav";
+import { useEffect, useState } from "react";
 
-function index() {
+function Index() {
+  const [data,setData]= useState([]);
+  useEffect(()=>{
+    fetch("http://localhost:5000/edcourse/allportfolio").then((result)=>{
+      result.json().then((resp)=>{
+        setData(resp)
+      })
+    })
+  },[])
+  console.warn(data)
   return (
     <>
-      <Nav/>
       <div className="header">
-        <h1 style={{ display: "inline" }}>
+        <h1>
           <strong>Pick a Track</strong>
         </h1>
       </div>
       <div className="cards">
-        {Tutorial &&
-          Tutorial.map((tutorial) => {
+        {data &&
+          data.map((tutorial) => {
             return (
               <div className="card" key={tutorial.id}>
                 <div className="card-body">
                   <h5 className="card-title">
-                    <strong>{tutorial.title}</strong>
+                    <strong>{tutorial.portfolioName}</strong>
                   </h5>
-                  <p className="card-text">{tutorial.content}</p>
-                  <Link to={tutorial.path} className="btn btn-primary">
+                  <p className="card-text">{tutorial.portfolioDescription}</p>
+                  <Link to="{tutorial.}" className="btn btn-primary">
                     Start Learning
                   </Link>
                 </div>
@@ -35,4 +42,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;

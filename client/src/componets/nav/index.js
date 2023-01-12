@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { LOGOUT } from "../../redux/const/actionsTypes";
+import './nav.css'
 
 function Nav(props) {
   const navigate = useNavigate();
@@ -36,11 +37,16 @@ function Nav(props) {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+
+      <nav className="navbar navbar-expand-lg ">
+      <div class="container-fluid">
         <Link className="navbar-brand" to="/">
           EdTech
         </Link>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
               <Link className="nav-link" to="/">
@@ -110,11 +116,11 @@ function Nav(props) {
                 Career_Roadmap
               </Link>
             </li>
-          </ul>
-        </div>
-        <div
+            </ul>
+          </div>
+          <div 
           className=" d-flex flex-row-reverse me-4"
-          id="navbarSupportedContent"
+          id="#navbarNavDropdown"
         >
           {localStorage.getItem("jToken") ? (
             <div className="dropdown">
@@ -124,6 +130,7 @@ function Nav(props) {
                 id="dropdownMenuButton1"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
+                style={{background:"rgb(24 106 255)", paddingLeft:"20px", paddingRight:"20px", borderRadius:"50px"}}
               >
                 Hello {usercred.firstName}
               </button>
@@ -136,6 +143,7 @@ function Nav(props) {
                     className="nav-link"
                     aria-current="page"
                     to="/account/profile"
+                    style={{color:"black"}}
                   >
                     Profile
                   </Link>
@@ -146,6 +154,7 @@ function Nav(props) {
                     className="nav-link"
                     aria-current="page"
                     to="/"
+                    style={{color:"black"}}
                   >
                     Logout
                   </Link>
@@ -153,12 +162,13 @@ function Nav(props) {
               </ul>
             </div>
           ) : (
-            <button className="nav-item">
+            <button className="nav-item" style={{background:"rgb(24 106 255)", paddingLeft:"10px", paddingRight:"10px", borderRadius:"50px"}}>
               <Link className="nav-link" to="/account/login">
                 Sign in
               </Link>
             </button>
           )}
+        </div>
         </div>
       </nav>
     </>
