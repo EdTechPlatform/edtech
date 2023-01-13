@@ -4,10 +4,13 @@ import Consult from "./consultinfo.json";
 import "./consult.css";
 import ConsultTrack from "./consultTrack.json";
 import Image from "./arrow-down.png";
+import Nav from "../nav";
 
-function index() {
+
+function Index(props) {
   return (
     <>
+    <Nav/>
       <div className="cards">
         {Consult &&
           Consult.map((consult) => {
@@ -54,4 +57,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;
