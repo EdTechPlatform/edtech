@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Consult from "./consultinfo.json";
 import "./consult.css";
@@ -6,11 +7,38 @@ import ConsultTrack from "./consultTrack.json";
 import Image from "./arrow-down.png";
 import Nav from "../nav";
 
+const TutorialPage = () => {
+  const location = useLocation();
 
-function Index(props) {
+  console.log(location.state);
+  const portfolioSlug = location.state.portfolioSlug;
+
+  const [data, setData] = useState([]);
+  // const navigate = useNavigate();
+
+  const getPortfilio = async () => {
+    const response = await fetch(
+      `http://localhost:5000/edcourse/allportfolio/${portfolioSlug}`,
+      {
+        method: "GET",
+      }
+    );
+    const json = await response.json();
+    setData(json);
+    
+  };
+
+  useEffect(() => {
+    getPortfilio();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+//   var json1 = JSON.parse(data);
+  // console.log({data})
+  console.log(data);
+//   console.log(json1["portfolio"].portfolioName);
   return (
-    <>
-    <Nav/>
+    <div>
+      <Nav />
       <div className="cards">
         {Consult &&
           Consult.map((consult) => {
@@ -53,8 +81,8 @@ function Index(props) {
             );
           })}
       </div>
-    </>
+    </div>
   );
-}
+};
 
-export default Index;
+export default TutorialPage;

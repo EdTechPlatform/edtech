@@ -6,22 +6,20 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function Index(props) {
+function Index() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
-  const [count, setCount] = useState(0);
 
   const handleClose = () => {
-    setCount(count + 1);
+   
     setShow(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    props.onSubmit(count);
     const response = await fetch(
       "http://localhost:5000/edcourse/createportfolio",
       {

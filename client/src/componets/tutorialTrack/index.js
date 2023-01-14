@@ -1,50 +1,46 @@
-import React from "react";
-import Nav from "../nav";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
-import { useEffect, useState } from "react";
-import Modal from "../modal/portfolioCreation.js";
-import { Link } from "react-router-dom";
+import Modal from '../modal/portfolioCreation.js'
 
 function Index() {
   const [data, setData] = useState([]);
-  const [count, setCount] = useState(0);
+  const navigate = useNavigate();
 
-  const getCount = (count) => {
-    setCount(count + 1);
-    console.log("coming", count);
+  const allPortfilio = async () => {
+    const response = await fetch("http://localhost:5000/edcourse/allportfolio", {
+      method: "GET",
+    });
+    const json = await response.json();
+    setData(json);
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/edcourse/allportfolio").then((result) => {
-      result.json().then((resp) => {
-        setData(resp);
-      });
-    });
-  }, [count]);
+    allPortfilio();
+  }, []);
 
-  console.warn(data);
   return (
     <>
-      <Nav />
+    
       <div className="header">
         <h1>
           <strong>Pick a Track</strong>
         </h1>
       </div>
-      <Modal onSubmit={getCount} />
+      <Modal/>
       <div className="cards">
         {data &&
           data.map((tutorial) => {
             return (
-              <div className="card" key={tutorial._id}>
+              <div className="card" key={tutorial.portfolioSlug}>
                 <div className="card-body">
                   <h5 className="card-title">
                     <strong>{tutorial.portfolioName}</strong>
                   </h5>
                   <p className="card-text">{tutorial.portfolioDescription}</p>
-                  <Link to="/account/tutorial/module" className="btn btn-primary">
+                  <button className="btn btn-primary"onClick={() => navigate("/account/tutorial/tutorialPage", { state: { portfolioSlug: tutorial.portfolioSlug } })}>
                     Start Learning
-                  </Link>
+                  </button>
                 </div>
               </div>
             );
