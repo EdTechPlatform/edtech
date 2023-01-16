@@ -49,7 +49,7 @@ const allportfolio = async (req, res) => {
 const getportfolio = async (req, res) => {
   const portfolioSlug = req.params.portfolioSlug;
   const portfolio = await Portfolio.findOne({ portfolioSlug });
-  res.json({ portfolio });
+  res.json(portfolio);
 };
 
 // Get a particular Module

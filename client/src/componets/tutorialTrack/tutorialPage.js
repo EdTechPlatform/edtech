@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
-import Consult from "./consultinfo.json";
 import "./consult.css";
-import ConsultTrack from "./consultTrack.json";
-import Image from "./arrow-down.png";
 import Nav from "../nav";
+import { useNavigate } from "react-router-dom";
+import Modal from '../modal/moduleCreation'
 
 const TutorialPage = () => {
   const location = useLocation();
@@ -14,7 +12,7 @@ const TutorialPage = () => {
   const portfolioSlug = location.state.portfolioSlug;
 
   const [data, setData] = useState([]);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const getPortfilio = async () => {
     const response = await fetch(
@@ -25,62 +23,56 @@ const TutorialPage = () => {
     );
     const json = await response.json();
     setData(json);
-    
   };
 
   useEffect(() => {
     getPortfilio();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, []);
-//   var json1 = JSON.parse(data);
-  // console.log({data})
   console.log(data);
-//   console.log(json1["portfolio"].portfolioName);
+  console.log(data.portfolioName);
+  console.log("-------", data.modules);
+
+
+  const arr = data.modules;
+  console.log(arr);
   return (
     <div>
-      <Nav />
+      <Nav /><br />
+      <Modal />
+
       <div className="cards">
-        {Consult &&
-          Consult.map((consult) => {
-            return (
-              <div className="card" key={consult.id}>
-                <div className="card-body">
-                  <h5 className="card-title" style={{ paddingBottom: "60px" }}>
-                    <strong>{consult.title}</strong>
-                  </h5>
-                  <p className="card-text">{consult.content}</p>
-                </div>
-              </div>
-            );
-          })}
+        <div className="card" key={data._id}>
+          <div className="card-body">
+            <h3 className="card-title" style={{ paddingBottom: "20px" }}>
+              <strong>{data.portfolioName}</strong>
+            </h3>
+            <p className="card-text">{data.portfolioDescription}</p>
+          </div>
+        </div>
       </div>
 
       <div className="box">
         <h4>Tutorial Track</h4>
       </div>
-      <div className="Modules">
-        {ConsultTrack &&
-          ConsultTrack.map((track) => {
-            return (
-              <div className="Module" key={track.id}>
-                <div className="Module-body">
-                  <h5 className="Module-title">
-                    <strong>{track.title}</strong>
-                  </h5>
-                  <img className="Module-img" src={Image} alt="" />
-                  <div className="Module-text">
-                    <Link to="/account/tutorial/consult/course">
-                      <p>{track.content}</p> <p> (Click to open the video)</p>
-                    </Link>
-                  </div>
-                  <img className="Module-img" src={Image} alt="" />
-                  <div className="Module-circle"></div>
-                  <img className="Module-img" src={Image} alt="" />
-                </div>
+
+      {arr &&
+        arr.map((tutorial) => {
+          return (
+            <div className="card" key={tutorial.moduleNumber}>
+              <div className="card-body">
+                <h5 className="card-title">
+                  <strong>{tutorial.moduleName}</strong>
+                </h5>
+                <p className="card-text">{tutorial.moduleDescription}</p>
+                <button className="btn btn-primary" onClick={() => navigate("/account/tutorial/tutorialPage/modulevideo", { state: { moduleNumber: tutorial.moduleNumber } })}>
+                  Start Learning
+                </button>
               </div>
-            );
-          })}
-      </div>
+            </div>
+          );
+        })}
+
     </div>
   );
 };

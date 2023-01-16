@@ -52,7 +52,7 @@ function Index() {
   return (
     <>
       <center>
-        <div class="btn-holder">
+        <div className="btn-holder">
           <Button variant="primary" onClick={handleShow}>
             + Add Portfolio
           </Button>
