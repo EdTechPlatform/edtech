@@ -8,11 +8,12 @@ import Modal from "react-bootstrap/Modal";
 import { useLocation } from "react-router-dom";
 
 function VideoUpload() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const location = useLocation();
     console.log(location.state);
     const portfolioSlug = location.state.portfolioSlug;
+     const moduleNumber = location.state.moduleNumber;
 
     const [title, setTitle] = useState("");
     const [number, setNumber] = useState("");
@@ -29,7 +30,7 @@ function VideoUpload() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const response = await fetch(
-            `http://localhost:5000/edcourse/addmodule/${portfolioSlug}/1`,
+            `http://localhost:5000/edcourse/addmodule/${portfolioSlug}/${moduleNumber}`,
             {
                 method: "POST",
                 headers: {
@@ -41,7 +42,7 @@ function VideoUpload() {
                 body: JSON.stringify({
                     videoTitle: title,
                     videoNumber: number,
-                    video: video,
+                   // video: video,
                 }),
             }
         );
@@ -54,7 +55,7 @@ function VideoUpload() {
                 });
             }, 100);
             setTimeout(() => {
-                navigate("/account/tutorial/tutorialPage", { replace: true });
+                navigate("/account/tutorial/tutorialPage/modulevideo", { replace: true });
             }, 2000);
         }
     };
@@ -96,7 +97,8 @@ function VideoUpload() {
                                 onChange={(e) => setNumber(e.target.value)}
                             />
                         </div>
-                        <div className="mb-3">
+                 /*for video upload*/
+                        {/* <div className="mb-3">
                             <label className="btn btn-dark btn-block text-left mt-3">
                                 {uploadButtonText}
                                 <input
@@ -105,7 +107,7 @@ function VideoUpload() {
                                     accept="video/*"
                                     hidden />
                             </label>
-                        </div>
+                        </div> */}
                         <div className="d-grid">
                             <button
                                 type="submit"

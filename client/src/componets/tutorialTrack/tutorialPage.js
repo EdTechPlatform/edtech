@@ -10,7 +10,7 @@ const TutorialPage = () => {
 
   console.log(location.state);
   const portfolioSlug = location.state.portfolioSlug;
-
+const num = location.state.portfolioSlug;
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
@@ -65,7 +65,7 @@ const TutorialPage = () => {
                   <strong>{tutorial.moduleName}</strong>
                 </h5>
                 <p className="card-text">{tutorial.moduleDescription}</p>
-                <button className="btn btn-primary" onClick={() => navigate("/account/tutorial/tutorialPage/modulevideo", { state: { moduleNumber: tutorial.moduleNumber } })}>
+                <button className="btn btn-primary" onClick={() => navigate("/account/tutorial/tutorialPage/modulevideo", { state: { moduleNumber: tutorial.moduleNumber, portfolioSlug: num } })}>
                   Start Learning
                 </button>
               </div>
