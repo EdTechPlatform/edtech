@@ -13,7 +13,9 @@ const VideoPlayer = () => {
         <iframe
           width="100%"
           height="100%"
-          src={"https://www.youtube.com/embed/" + vid}
+          // src={"https://www.youtube.com/embed/" + vid}
+          src={"https://drive.google.com/file/d/1gocFtRXgznh_Hck2ft2GoGrvylw_C_LV/view"}
+
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
