@@ -12,7 +12,7 @@ const videoSchema = new mongoose.Schema(
       type: String,
       lowercase: true,
     },
-    // video: { type: Object },
+    videoLink: { type: String }
   },
   { timestamps: true }
 );
@@ -22,8 +22,8 @@ const moduleSchema = new mongoose.Schema(
     moduleName: {
       type: String,
     },
-    moduleNumber: { type: Number, required: true},
- 
+    moduleNumber: { type: Number, required: true },
+
     moduleDescription: { type: String },
 
     videos: [videoSchema],
