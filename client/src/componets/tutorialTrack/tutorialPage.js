@@ -10,7 +10,7 @@ const TutorialPage = () => {
 
   console.log(location.state);
   const portfolioSlug = location.state.portfolioSlug;
-const num = location.state.portfolioSlug;
+  const num = location.state.portfolioSlug;
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
@@ -51,23 +51,26 @@ const num = location.state.portfolioSlug;
           </div>
         </div>
       </div>
-
-      <div className="box">
+<div className="row justify-content-center">
+      <div className="box w-25">
         <h4>Tutorial Track</h4>
+      </div>
       </div>
 
       {arr &&
         arr.map((tutorial) => {
           return (
-            <div className="card" key={tutorial.moduleNumber}>
-              <div className="card-body">
-                <h5 className="card-title">
-                  <strong>{tutorial.moduleName}</strong>
-                </h5>
-                <p className="card-text">{tutorial.moduleDescription}</p>
-                <button className="btn btn-primary" onClick={() => navigate("/account/tutorial/tutorialPage/modulevideo", { state: { moduleNumber: tutorial.moduleNumber, portfolioSlug: num } })}>
-                  Start Learning
-                </button>
+            <div className="cards">
+              <div className="card" key={tutorial.moduleNumber}>
+                <div className="card-body">
+                  <h5 className="card-title">
+                    <strong>{tutorial.moduleName}</strong>
+                  </h5>
+                  <p className="card-text">{tutorial.moduleDescription}</p>
+                  <button className="btn btn-primary" onClick={() => navigate("/account/tutorial/tutorialPage/modulevideo", { state: { moduleNumber: tutorial.moduleNumber, portfolioSlug: num } })}>
+                    Enter
+                  </button>
+                </div>
               </div>
             </div>
           );

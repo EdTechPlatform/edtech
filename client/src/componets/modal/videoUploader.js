@@ -50,7 +50,7 @@ function VideoUpload() {
         console.log(json);
         if (json.success === true) {
             setTimeout(() => {
-                toast.success("Module Created Successfully", {
+                toast.success("Video Uploaded Successfully", {
                     position: "top-center",
                 });
             }, 100);
@@ -80,7 +80,7 @@ function VideoUpload() {
                             <input
                                 type="text"
                                 className="form-control"
-                                placeholder="Enter Module Name"
+                                placeholder="Enter Video Title"
                                 required
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
@@ -91,7 +91,7 @@ function VideoUpload() {
                             <input
                                 type="number"
                                 className="form-control"
-                                placeholder="Enter Module Number"
+                                placeholder="Enter Video Number"
                                 required
                                 value={number}
                                 onChange={(e) => setNumber(e.target.value)}
