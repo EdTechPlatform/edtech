@@ -13,13 +13,15 @@ function VideoUpload() {
     const location = useLocation();
     console.log(location.state);
     const portfolioSlug = location.state.portfolioSlug;
-     const moduleNumber = location.state.moduleNumber;
+    const moduleNumber = location.state.moduleNumber;
 
     const [title, setTitle] = useState("");
     const [number, setNumber] = useState("");
     const [video, setVideo] = useState("");
     const [uploadButtonText, setUploadButtonText] = useState("Upload Video");
-
+    const [progress, setProgress] = useState(0);
+    const [file, setFile] = useState(null);
+    // 
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
 
@@ -27,102 +29,93 @@ function VideoUpload() {
         setShow(false);
     };
 
-    const handleSubmit = async (e) => {
+    const onChangeHandler = async (e) => {
         e.preventDefault();
+        setFile(
+            e.target.files[0],
+            // loaded: 0,
+        );
+        // console.log("*********",e.target.files[0]);
+    };
+    // console.log("[[[[[[]]]]]]",file);
+    const handleSubmit = async (e) => {
+        console.log(",,,,, file => ", file);
+        // const file = e.target.files[0];
+        e.preventDefault();
+        const formData = new FormData();
+        // const { selectedFile } = file;
+        formData.append('video', file);
+        console.log(",,,,, formdata => ", formData);
         const response = await fetch(
-            `http://localhost:5000/edcourse/addmodule/${portfolioSlug}/${moduleNumber}`,
+            `http://localhost:5000/edcourse/addvideo/${portfolioSlug}/${moduleNumber}`,
             {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                    jToken: localStorage.getItem("jToken"),
-                },
-                body: JSON.stringify({
-                    videoTitle: title,
-                    videoNumber: number,
-                   // video: video,
-                }),
+                headers: {jToken: localStorage.getItem("jToken"),},
+                body: formData,
+                onUploadProgress: (e) => {setProgress(Math.round((100 * e.loaded) / e.total));}
             }
         );
-        const json = await response.json();
-        console.log(json);
-        if (json.success === true) {
-            setTimeout(() => {
-                toast.success("Video Uploaded Successfully", {
-                    position: "top-center",
-                });
-            }, 100);
-            setTimeout(() => {
-                navigate("/account/tutorial/tutorialPage/modulevideo", { replace: true });
-            }, 2000);
-        }
-    };
-    return (
-        <>
-            <center>
-                <div className="btn-holder">
-                    <Button variant="primary" onClick={handleShow}>
-                        + Add Video
-                    </Button>
-                </div>
-            </center>
+    setUploadButtonText("Video Uploaded");
+    const json = await response.json();
+    console.log("------json => ", json);
+    if (json.success === true) {
+        setTimeout(() => {
+            toast.success("Video Uploaded Successfully", {
+                position: "top-center",
+            });
+        }, 100);
+        setTimeout(() => {
+            navigate("/account/tutorial/tutorialPage/modulevideo", { replace: true });
+            setUploadButtonText("Upload Video");
+        }, 2000);
+    }
+};
+return (
+    <>
+        <center>
+            <div className="btn-holder">
+                <Button variant="primary" onClick={handleShow}>
+                    + Add Video
+                </Button>
+            </div>
+        </center>
 
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add Video</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <form method="POST" onSubmit={handleSubmit}>
-                        <div className="mb-3">
-                            <label>Video Title</label>
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Add Video</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                {/* <form method="POST" onSubmit={handleSubmit}> */}
+                <form method="POST">
+                    <div className="mb-3">
+                        <label className="btn btn-dark btn-block text-left mt-3">
+                            {uploadButtonText}
+                            <br/>
+                         
                             <input
-                                type="text"
-                                className="form-control"
-                                placeholder="Enter Video Title"
-                                required
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label>Video Number</label>
-                            <input
-                                type="number"
-                                className="form-control"
-                                placeholder="Enter Video Number"
-                                required
-                                value={number}
-                                onChange={(e) => setNumber(e.target.value)}
-                            />
-                        </div>
-                 /*for video upload*/
-                        {/* <div className="mb-3">
-                            <label className="btn btn-dark btn-block text-left mt-3">
-                                {uploadButtonText}
-                                <input
-                                    // onChange={handleVideo}
-                                    type="file"
-                                    accept="video/*"
-                                    hidden />
-                            </label>
-                        </div> */}
-                        <div className="d-grid">
-                            <button
-                                type="submit"
-                                className="btn btn-primary"
-                                onClick={handleClose}
-                            >
-                                Submit
-                            </button>
-                        </div>
-                        <ToastContainer />
-                    </form>
-                </Modal.Body>
-            </Modal>
-        </>
-    );
+                                // onChange={handleVideo}
+                                type="file"
+                                accept="video/*"
+                                onChange={onChangeHandler}
+                                hidden />
+                        </label>
+                        {progress}
+                    </div>
+                    <div className="d-grid">
+                        <button
+                            type="submit"
+                            className="btn btn-primary"
+                            onClick={handleSubmit}
+                        >
+                            Submit
+                        </button>
+                    </div>
+                    <ToastContainer />
+                </form>
+            </Modal.Body>
+        </Modal>
+    </>
+);
 }
 
 export default VideoUpload;

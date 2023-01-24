@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
+import Nav from '../nav'
 import Modal from '../modal/portfolioCreation.js'
 
 function Index() {
@@ -21,7 +22,7 @@ function Index() {
 
   return (
     <>
-    
+    <Nav/>
       <div className="header">
         <h1>
           <strong>Pick a Track</strong>
