@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import Modal from '../modal/videoUploader'
 import { useNavigate } from "react-router-dom";
 import Nav from "../nav";
@@ -18,7 +18,13 @@ const TutorialPage = () => {
   console.log("---4444", location.state.portfolioSlug);
 
   const [data, setData] = useState([]);
+  const [vid, uid] = useState("");
+  // const [title, utitle] = useState(coursecontent[0].title);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getVideo();
+  }, []);
 
   const getVideo = async () => {
     const response = await fetch(
@@ -31,56 +37,77 @@ const TutorialPage = () => {
     setData(json);
   };
 
-  useEffect(() => {
-    getVideo();
-    // eslint-disable-next-line
-  }, []);
+
 
   console.log("khj", data);
   console.log("=======", data.videos);
+  console.log("---", data.videos);
+  console.log("...upper vis => ", vid)
+  // let results = data.videos.map(item => item.videoLink);
+  // console.log("1111",results);
   const arr = data.videos;
-  const renderVideo = () => {
+
+  const renderVideo = (vid) => {
+    console.log("...render vis => ", vid)
     return (
       <>
-        <iframe
+        {vid === undefined || "" ? <h3>CLick on a Video</h3> : <iframe
+          controlsList="nodownload"
           width="100%"
           height="100%"
-          src={"https://drive.google.com/file/d/1gocFtRXgznh_Hck2ft2GoGrvylw_C_LV/view"}
+          src={vid}
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-        {/* <h3 className="title">{title}</h3> */}
+          allowFullScreen
+        ></iframe>}
       </>
     );
   };
+
   return (
-    <div>
+    <div onContextMenu={(e) => e.preventDefault()}>
       <Nav />
 
       <main className="container">
-        <section className="main-video">{renderVideo()}</section>
+        <section onContextMenu={(e) => e.preventDefault()} className="main-video">{renderVideo()}</section>
 
         <section className="video-playlist">
           <h3 className="title">{portfolioSlug} Module {moduleNumber}</h3>
 
           <div className="videos">
             {arr && arr.map((item) => {
+
               return (
-                <div className="menu-list">
+                <div className="menu-list" key = {item._id}>
 
                   {/* <p>{record.id}</p> */}
-                  <a
-                    href="#!"
+                  {/* <NavLink
+                    to="#!"
                     className="title"
-                  // onClick={() => {
-                  //   uid(record.name);
-                  //   utitle(record.title);
-                  // }}
-                  >
-                    {item.videoTitle}
-                  </a>
+                    onClick={() => {
+                      uid(item.videoLink);
+                      //   // utitle(record.title);
+                    }}
+
+                  > */}
+
+                  <button onClick={() => renderVideo(item.videoLink)}>
+
+                  {item.videoTitle}
+
+                  </button>
+                  {/* </NavLink> */}
+                  {/* <iframe
+                    controlsList="nodownload"
+                    width="100%"
+                    height="100%"
+                    src={item.videoLink}
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe> */}
                 </div>
               );
             })}
