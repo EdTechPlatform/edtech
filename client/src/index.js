@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "./global.css"
-
 import { Provider } from 'react-redux';
 import { reducers } from "./redux/reducers"
 import thunk from "redux-thunk"
@@ -16,11 +15,14 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, {}, composeEnhancers(applyMiddleware(thunk)))
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// require('dotenv').config()
 root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <GoogleOAuthProvider clientId="483968689376-toatfse3eangn6o78lussus9g6r8t7lj.apps.googleusercontent.com">
+        {/* <GoogleOAuthProvider clientId=process.env.GOOGLE_CLIENT_ID> */}
           <App />
         </GoogleOAuthProvider>
       </BrowserRouter>

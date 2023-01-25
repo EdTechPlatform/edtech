@@ -12,7 +12,7 @@ function Index() {
 
     const location = useLocation();
 
-    console.log(location.state);
+    // console.log(location.state);
     const portfolioSlug = location.state.portfolioSlug;
 
     const [name, setName] = useState("");
@@ -46,7 +46,7 @@ function Index() {
             }
         );
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
         if (json.success === true) {
             setTimeout(() => {
                 toast.success("Module Created Successfully", {

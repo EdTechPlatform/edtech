@@ -20,7 +20,7 @@ function Nav(props) {
       },
     });
     const json = await response.json();
-    console.log({ userdata: json });
+    // console.log({ userdata: json });
     setUserCred(json);
   };
 

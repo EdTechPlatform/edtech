@@ -1,7 +1,5 @@
-const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const axios = require("axios");
-const config = require("config");
 const jwtSecret = "xyz123";
 const User = require("../models/user");
 
@@ -82,7 +80,49 @@ const signupController = async (req, res) => {
   }
 };
 
+const registerUserController = async (req, res) => {
+  const emailId = req.email;
+  const { dob, gender, address1, address2, city, state, pin, country, phone } = req.body;
+
+  try {
+    await User.findOneAndUpdate(
+      { email: emailId },
+      {
+        $set: {
+          dob,
+          gender,
+          address1,
+          address2,
+          city,
+          state,
+          pin,
+          country,
+          phone,
+        },
+      }
+    );
+    const user = await User.findOne({ email: emailId });
+    res.json({ success: true, message: user });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Some Internal Server Error");
+  }
+}
+
+const getUserController = async (req, res) => {
+  try {
+    const useremail = req.email;
+    const user = await User.findOne({ email: useremail });
+    res.json(user);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Some Internal Server Error");
+  }
+}
+
 module.exports = {
   signinController,
   signupController,
+  registerUserController,
+  getUserController
 };

@@ -11,13 +11,13 @@ function VideoUpload() {
     const navigate = useNavigate();
 
     const location = useLocation();
-    console.log(location.state);
+    // console.log(location.state);
     const portfolioSlug = location.state.portfolioSlug;
     const moduleNumber = location.state.moduleNumber;
 
-    const [title, setTitle] = useState("");
-    const [number, setNumber] = useState("");
-    const [video, setVideo] = useState("");
+    // const [title, setTitle] = useState("");
+    // const [number, setNumber] = useState("");
+    // const [video, setVideo] = useState("");
     const [uploadButtonText, setUploadButtonText] = useState("Upload Video");
     const [progress, setProgress] = useState(0);
     const [file, setFile] = useState(null);
@@ -39,13 +39,13 @@ function VideoUpload() {
     };
     // console.log("[[[[[[]]]]]]",file);
     const handleSubmit = async (e) => {
-        console.log(",,,,, file => ", file);
+        // console.log(",,,,, file => ", file);
         // const file = e.target.files[0];
         e.preventDefault();
         const formData = new FormData();
         // const { selectedFile } = file;
         formData.append('video', file);
-        console.log(",,,,, formdata => ", formData);
+        // console.log(",,,,, formdata => ", formData);
         const response = await fetch(
             `http://localhost:5000/edcourse/addvideo/${portfolioSlug}/${moduleNumber}`,
             {
@@ -57,7 +57,7 @@ function VideoUpload() {
         );
     setUploadButtonText("Video Uploaded");
     const json = await response.json();
-    console.log("------json => ", json);
+    // console.log("------json => ", json);
     if (json.success === true) {
         setTimeout(() => {
             toast.success("Video Uploaded Successfully", {

@@ -8,7 +8,7 @@ import Modal from '../modal/moduleCreation'
 const TutorialPage = () => {
   const location = useLocation();
 
-  console.log(location.state);
+  // console.log(location.state);
   const portfolioSlug = location.state.portfolioSlug;
   const num = location.state.portfolioSlug;
   const [data, setData] = useState([]);
@@ -29,13 +29,13 @@ const TutorialPage = () => {
     getPortfilio();
     // eslint-disable-next-line
   }, []);
-  console.log(data);
-  console.log(data.portfolioName);
-  console.log("-------", data.modules);
+  // console.log(data);
+  // console.log(data.portfolioName);
+  // console.log("-------", data.modules);
 
 
   const arr = data.modules;
-  console.log(arr);
+  // console.log(arr);
   return (
     <div>
       <Nav /><br />
@@ -61,7 +61,7 @@ const TutorialPage = () => {
         arr.map((tutorial) => {
           return (
             <div className="cards">
-              <div className="card" key={tutorial.moduleNumber}>
+              <div className="card" key={tutorial._id}>
                 <div className="card-body">
                   <h5 className="card-title">
                     <strong>{tutorial.moduleName}</strong>

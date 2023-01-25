@@ -3,13 +3,13 @@ const { nanoid } = require("nanoid");
 const Portfolio = require("../models/portfolio");
 const slugify = require("slugify");
 const { readFileSync } = require("fs");
-const User = require("../models/user");
+require('dotenv').config()
 
 const awsConfig = {
-  accessKeyId: "AKIAQUKR22Z3C4PE4ROG",
-  secretAccessKey: "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",
-  region: "ap-south-1",
-  apiVersion: "2012-10-17",
+  accessKeyId: process.env.ACCESS_KEY_ID,
+  secretAccessKey: process.env.SECRET_ACCESS_KEY,
+  region: process.env.REGION,
+  apiVersion: process.env.API_VERSION,
 };
 
 const S3 = new AWS.S3(awsConfig);
@@ -71,6 +71,7 @@ const getmodule = async (req, res) => {
   res.json(result);
 };
 
+// Delete a Particular Module
 const deletemodule = async (req, res) => {
   const portfolioSlug = req.params.portfolioSlug;
   const i = req.params.moduleNumber;

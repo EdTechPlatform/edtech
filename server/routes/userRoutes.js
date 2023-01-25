@@ -5,65 +5,25 @@ const fetchuser = require("../middleware/fetchlogin");
 const {
   signinController,
   signupController,
+  registerUserController,
+  getUserController
 } = require("../controllers/userController");
 
 const router = express.Router();
 
+
+// Test API
 router.get("/test", async (req, res) => {
   res.send("Test Api");
 });
 
+// ROUTE 1:  User SignIn :POST
 router.post("/signin", signinController);
+// ROUTE 2:  User SignUp :POST
 router.post("/signup", signupController);
-
-//Register API....//
-
-router.post("/register", fetchuser, async (req, res) => {
-  // const emailId = req.email;
-  const emailId = req.email;
-
-  const { dob, gender, address1, address2, city, state, pin, country, phone } =
-    req.body;
-
-  try {
-    //const oldUser = await User.findOne({ email });
-
-    await User.findOneAndUpdate(
-      { email: emailId },
-      {
-        $set: {
-          dob,
-          gender,
-          address1,
-          address2,
-          city,
-          state,
-          pin,
-          country,
-          phone,
-        },
-      }
-    );
-    const user = await User.findOne({ email: emailId });
-    res.json({ success: true, message: user });
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).send("Some Internal Server Error");
-  }
-});
-
+// ROUTE 3:  User Registration Form :POST
+router.post("/register", fetchuser, registerUserController);
 // ROUTE 4: Get Loggedin user details using: GET
-router.get("/getuser", fetchuser, async (req, res) => {
-  try {
-    const useremail = req.email;
-    const user = await User.findOne({ email: useremail });
-
-    res.json(user);
-    // console.log(user);
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).send("Some Internal Server Error");
-  }
-});
+router.get("/getuser", fetchuser, getUserController);
 
 module.exports = router;

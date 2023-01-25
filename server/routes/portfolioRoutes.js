@@ -13,20 +13,30 @@ const {
   getmodule,
   deletemodule,
   addVideo,
-} = require("../controllers/portfolio");
+} = require("../controllers/portfolioController");
 
-// Create Portfolio
+// ROUTE 1: Create Portfolio : POST
 router.post("/createportfolio", fetchuser, createPortfolio);
+
+// ROUTE 1: Fetch All Portfolio : GET
 router.get("/allportfolio", allportfolio);
+
+// ROUTE 1: Fetch Specific Portfolio Using Slug : GET
 router.get("/allportfolio/:portfolioSlug", getportfolio);
+
+// ROUTE 1: Delete Specific Portfolio Using Slug : DELETE
 router.delete("/allportfolio/:portfolioSlug", deletePortfolio);
 
-// Add Module
+// ROUTE 1: Create a Module for Specific Portfolio Using Slug : POST
 router.post("/addmodule/:portfolioSlug", fetchuser, addmodule);
+
+// ROUTE 1: Get a Module for Specific Portfolio Using SLug : GET
 router.get("/getmodule/:portfolioSlug/:moduleNumber", getmodule);
+
+// ROUTE 1: DELET a Module for Specific Portfolio Using SLug : PUT
 router.put("/getmodule/:portfolioSlug/:moduleNumber", deletemodule);
 
-// Add video
+// ROUTE 1: Add a Video to a Module for Specific Portfolio Using SLug and Module Number : POST
 router.post("/addvideo/:portfolioSlug/:moduleNumber", fetchuser, formidable(), addVideo);
 
 module.exports = router;
