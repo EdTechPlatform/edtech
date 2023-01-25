@@ -55,8 +55,10 @@ const getportfolio = async (req, res) => {
 
 const deletePortfolio = async (req, res) => {
   const portfolioSlug = req.params.portfolioSlug;
-  const portfolio = await Portfolio.findOneAndDelete({ portfolioSlug });
-  res.json(portfolio);
+  const portfolio = await Portfolio.findOne({ portfolioSlug });
+  if (!portfolio) { return res.status(400).send("Portfolio Not Found"); }
+  const result = await Portfolio.findOneAndDelete({ portfolioSlug });
+  res.json({success:true});
 }
 
 // Get a particular Module
@@ -72,8 +74,10 @@ const getmodule = async (req, res) => {
 const deletemodule = async (req, res) => {
   const portfolioSlug = req.params.portfolioSlug;
   const i = req.params.moduleNumber;
-  const portfolio = await Portfolio.updateOne({ portfolioSlug }, { $pull: { modules: { moduleNumber: i } } });
-  res.json(portfolio);
+  const portfolio = await Portfolio.findOne({ portfolioSlug });
+  if (!portfolio) { return res.status(400).send("Portfolio Not Found"); }
+  portfolio = await Portfolio.updateOne({ portfolioSlug }, { $pull: { modules: { moduleNumber: i } } });
+  res.json({portfolio,success:true});
 }
 
 // Add a new module

@@ -3,10 +3,14 @@ import { useNavigate } from "react-router-dom";
 import "./index.css";
 import Nav from '../nav'
 import Modal from '../modal/portfolioCreation.js'
+import { useLocation } from "react-router-dom";
 
 function Index() {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log("..1..",location);
 
   const allPortfilio = async () => {
     const response = await fetch("http://localhost:5000/edcourse/allportfolio", {
@@ -14,6 +18,13 @@ function Index() {
     });
     const json = await response.json();
     setData(json);
+  };
+
+  const delPortfilio = async (slug) => {
+    const response = await fetch(`http://localhost:5000/edcourse/allportfolio/${slug}`, {
+      method: "DELETE",
+    });
+   
   };
 
   useEffect(() => {
@@ -42,8 +53,7 @@ function Index() {
                   <button className="btn btn-primary"onClick={() => navigate("/account/tutorial/tutorialPage", { state: { portfolioSlug: tutorial.portfolioSlug } })}>
                     Start Learning
                   </button>
-                  <button type="button" class="btn close"
-                data-dismiss="alert" aria-label="Close"></button>
+                  <button type="button" className="btn-close" aria-label="Close" onClick={() => delPortfilio(tutorial.portfolioSlug)}></button>
                 </div>
               </div>
             );
