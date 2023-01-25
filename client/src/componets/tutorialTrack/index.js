@@ -42,6 +42,8 @@ function Index() {
                   <button className="btn btn-primary"onClick={() => navigate("/account/tutorial/tutorialPage", { state: { portfolioSlug: tutorial.portfolioSlug } })}>
                     Start Learning
                   </button>
+                  <button type="button" class="btn close"
+                data-dismiss="alert" aria-label="Close"></button>
                 </div>
               </div>
             );
