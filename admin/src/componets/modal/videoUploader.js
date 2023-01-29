@@ -36,7 +36,7 @@ function VideoUpload() {
         const formData = new FormData();
         formData.append('video', file);
         const response = await fetch(
-            `http://localhost:5000/edcourse/addvideo/${portfolioSlug}/${moduleNumber}`,
+            `https://ed-tech-service-backend.onrender.com/edcourse/addvideo/${portfolioSlug}/${moduleNumber}`,
             {
                 method: "POST",
                 headers: { adminToken: localStorage.getItem("adminToken"), },

@@ -24,7 +24,7 @@ function Index() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const response = await fetch(
-            `http://localhost:5000/edcourse/addModule/${portfolioSlug}`,
+            `https://ed-tech-service-backend.onrender.com/edcourse/addModule/${portfolioSlug}`,
             {
                 method: "POST",
                 headers: {

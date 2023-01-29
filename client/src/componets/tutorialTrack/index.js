@@ -7,7 +7,7 @@ function Index() {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
   const allPortfilio = async () => {
-    const response = await fetch("http://localhost:5000/edcourse/allportfolio", {
+    const response = await fetch("https://ed-tech-service-backend.onrender.com/edcourse/allportfolio", {
       method: "GET",
     });
     const json = await response.json();

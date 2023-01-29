@@ -4,8 +4,6 @@ const authReducer = (state = { authData: null }, action) => {
   switch (action.type) {
     case actionType.AUTH:
       localStorage.setItem("user_info", JSON.stringify({ ...action?.data }));
-      // console.log("userDeatils : ", action.data);
-      // localStorage.setItem("email", ( action.data.result.email ));
       localStorage.setItem("jToken", action.data.token);
 
       return { ...state, authData: action.data };

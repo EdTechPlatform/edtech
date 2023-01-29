@@ -21,7 +21,7 @@ function Index() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch(
-      "http://localhost:5000/edcourse/createportfolio",
+      "https://ed-tech-service-backend.onrender.com/edcourse/createportfolio",
       {
         method: "POST",
         headers: {

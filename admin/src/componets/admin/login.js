@@ -11,7 +11,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:5000/admin/loginadmin", {
+        const response = await fetch("https://ed-tech-service-backend.onrender.com/admin/loginadmin", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

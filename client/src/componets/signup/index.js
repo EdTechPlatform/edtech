@@ -1,11 +1,9 @@
 import React from "react";
 import SignUp from "./Signup.module.css";
 import { useNavigate, Link } from "react-router-dom";
-
 import { useGoogleLogin } from "@react-oauth/google";
 import { useDispatch } from "react-redux";
 import { signupGoogle } from "../../redux/actions/auth";
-// import Nav from "../nav";
 
 function Signup() {
   const nagivate = useNavigate();

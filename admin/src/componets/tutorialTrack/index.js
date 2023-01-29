@@ -9,7 +9,7 @@ function Index() {
   const navigate = useNavigate();
 
   const allPortfilio = async () => {
-    const response = await fetch("http://localhost:5000/edcourse/allportfolio", {
+    const response = await fetch("https://ed-tech-service-backend.onrender.com/edcourse/allportfolio", {
       method: "GET",
     });
     const json = await response.json();
@@ -17,7 +17,7 @@ function Index() {
   };
 
   const delPortfilio = async (slug) => {
-    const response = await fetch(`http://localhost:5000/edcourse/allportfolio/${slug}`, {
+    const response = await fetch(`https://ed-tech-service-backend.onrender.com/edcourse/allportfolio/${slug}`, {
       method: "DELETE",
     });
     console.log("res => ", response);

@@ -5,7 +5,7 @@ function Profile() {
   const [usercred, setUserCred] = useState([]);
 
   const userdeatils = async () => {
-    const response = await fetch("http://localhost:5000/users/getuser", {
+    const response = await fetch("https://ed-tech-service-backend.onrender.com/users/getuser", {
       method: "GET",
       headers: {
         jToken: localStorage.getItem("jToken"),

@@ -14,7 +14,7 @@ const SignUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:5000/admin/createadmin", {
+        const response = await fetch("https://ed-tech-service-backend.onrender.com/admin/createadmin", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

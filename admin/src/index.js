@@ -3,13 +3,10 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "./global.css"
-import {BrowserRouter} from "react-router-dom"
-
-
+import { BrowserRouter } from "react-router-dom"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-// require('dotenv').config()
 root.render(
   <React.StrictMode>
       <BrowserRouter>

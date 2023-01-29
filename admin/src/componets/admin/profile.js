@@ -4,7 +4,7 @@ import Nav from '../nav'
 const Profile = () => {
     const [admincred, setAdminCred] = useState([]);
     const userdeatils = async () => {
-        const response = await fetch("http://localhost:5000/admin/getadmin", {
+        const response = await fetch("https://ed-tech-service-backend.onrender.com/admin/getadmin", {
             method: "GET",
             headers: {
                 adminToken: localStorage.getItem("adminToken"),

@@ -16,7 +16,7 @@ const ModuleVideoPage = () => {
 
   const getVideo = async () => {
     const response = await fetch(
-      `http://localhost:5000/edcourse/getmodule/${portfolioSlug}/${moduleNumber}`,
+      `https://ed-tech-service-backend.onrender.com/edcourse/getmodule/${portfolioSlug}/${moduleNumber}`,
       {
         method: "GET",
       }

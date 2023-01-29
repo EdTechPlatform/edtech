@@ -13,7 +13,7 @@ const TutorialPage = () => {
 
   const getPortfilio = async () => {
     const response = await fetch(
-      `http://localhost:5000/edcourse/allportfolio/${portfolioSlug}`,
+      `https://ed-tech-service-backend.onrender.com/edcourse/allportfolio/${portfolioSlug}`,
       {
         method: "GET",
       }
