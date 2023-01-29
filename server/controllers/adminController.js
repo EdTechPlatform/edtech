@@ -3,7 +3,8 @@ const jwt = require("jsonwebtoken");
 const jwtsecret = "xyz123";
 
 const createAdminController = async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, secretKey } = req.body;
+    if (secretKey !== "secret") return res.status(400).json({ success: false, error: "Incorrect Secret Key" });
     try {
         let admin = await Admin.findOne({ username });
         if (admin) {
@@ -19,7 +20,7 @@ const createAdminController = async (req, res) => {
         res.status(200).json({ success: true, admin });
     } catch (error) {
         console.error(error.message);
-        res.status(500).send("Some Internal Server Error");
+        res.status(500).json({ success: false, error: "Some Internal Server Error" });
     }
 };
  
@@ -42,7 +43,6 @@ const loginAdminController = async (req, res) => {
         }
         let data = admin.id;
         const adminToken = jwt.sign(username, jwtsecret);
-        console.log("adminToken => ", adminToken);
         const result = await Admin.findByIdAndUpdate(
             { _id: data },
             {

@@ -13,8 +13,6 @@ function Signup() {
 
   function handleGoogleLoginSuccess(tokenResponse) {
     const accessToken = tokenResponse.access_token;
-    // console.log(accessToken);
-
     dispatch(signupGoogle(accessToken, nagivate));
   }
 

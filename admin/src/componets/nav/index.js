@@ -1,25 +1,21 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { connect } from "react-redux";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { LOGOUT } from "../../redux/const/actionsTypes";
 import './nav.css'
 
 function Nav(props) {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
   const [usercred, setUserCred] = useState([]);
 
   const userdeatils = async () => {
-    const response = await fetch("http://localhost:5000/users/getuser", {
+    const response = await fetch("http://localhost:5000/admin/getadmin", {
       method: "GET",
       headers: {
-        jToken: localStorage.getItem("jToken"),
+        adminToken: localStorage.getItem("adminToken"),
       },
     });
     const json = await response.json();
-    // console.log({ userdata: json });
     setUserCred(json);
   };
 
@@ -27,13 +23,13 @@ function Nav(props) {
     userdeatils();
   }, []);
 
-  function handleLogOut(e) {
-    e.preventDefault();
+ 
 
-    dispatch({ type: LOGOUT });
+  const handleLogOut = () => {
+    localStorage.ClearItem("adminToken");
     navigate("/");
-  }
 
+  }
   return (
     <>
 
@@ -121,7 +117,7 @@ function Nav(props) {
           className=" d-flex flex-row-reverse me-4"
           id="#navbarNavDropdown"
         >
-          {localStorage.getItem("jToken") ? (
+          {localStorage.getItem("adminToken") ? (
             <div className="dropdown">
               <button
                 className="btn btn-secondary dropdown-toggle"
@@ -131,7 +127,7 @@ function Nav(props) {
                 aria-expanded="false"
                 style={{background:"rgb(24 106 255)", paddingLeft:"20px", paddingRight:"20px", borderRadius:"50px"}}
               >
-                Hello {usercred.firstName}
+                Hello {usercred.username}
               </button>
               <ul
                 className="dropdown-menu"
@@ -162,7 +158,7 @@ function Nav(props) {
             </div>
           ) : (
             <button className="nav-item" style={{background:"rgb(24 106 255)", paddingLeft:"10px", paddingRight:"10px", borderRadius:"50px"}}>
-              <Link className="nav-link" to="/account/login">
+              <Link className="nav-link" to="/admin/login">
                 Sign in
               </Link>
             </button>
@@ -174,6 +170,5 @@ function Nav(props) {
   );
 }
 
-const mapStateToProps = (state) => ({ auth: state.auth });
 
-export default connect(mapStateToProps)(Nav);
+export default Nav;

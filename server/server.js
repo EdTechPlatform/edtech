@@ -4,7 +4,8 @@ const cors = require("cors");
 connectToMongo();
 
 const app = express();
-
+// 3kO7oySIvIymHVfi
+// uO6QF5xhAk307KDZ
 app.use(cors());
 app.use(express.json());
 

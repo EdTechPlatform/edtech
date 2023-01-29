@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Modal from '../modal/videoUploader'
 import Nav from "../nav";
 
-
 const ModuleVideoPage = () => {
-
   const location = useLocation();
-
   const moduleNumber = location.state.moduleNumber;
   const portfolioSlug = location.state.portfolioSlug;
   const [datav, setDatav] = useState([]);
@@ -65,6 +63,7 @@ const ModuleVideoPage = () => {
             </>
           );
         })}
+      <Modal />
     </>
   );
 }

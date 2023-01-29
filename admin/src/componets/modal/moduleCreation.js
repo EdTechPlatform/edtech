@@ -9,16 +9,11 @@ import { useLocation } from "react-router-dom";
 
 function Index() {
     const navigate = useNavigate();
-
     const location = useLocation();
-
-    // console.log(location.state);
     const portfolioSlug = location.state.portfolioSlug;
-
     const [name, setName] = useState("");
     const [number, setNumber] = useState("");
     const [description, setDescription] = useState("");
-
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
 
@@ -36,7 +31,7 @@ function Index() {
                     "Content-Type": "application/json",
                     Accept: "application/json",
                     "Access-Control-Allow-Origin": "*",
-                    jToken: localStorage.getItem("jToken"),
+                    adminToken: localStorage.getItem("adminToken"),
                 },
                 body: JSON.stringify({
                     moduleName: name,
@@ -46,7 +41,6 @@ function Index() {
             }
         );
         const json = await response.json();
-        // console.log(json);
         if (json.success === true) {
             setTimeout(() => {
                 toast.success("Module Created Successfully", {

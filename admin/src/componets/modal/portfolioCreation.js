@@ -28,7 +28,7 @@ function Index() {
           "Content-Type": "application/json",
           Accept: "application/json",
           "Access-Control-Allow-Origin": "*",
-          jToken: localStorage.getItem("jToken"),
+          adminToken: localStorage.getItem("adminToken"),
         },
         body: JSON.stringify({
           portfolioName: name,

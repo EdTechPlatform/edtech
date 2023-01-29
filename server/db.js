@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const mongostr = "mongodb://localhost:27017/EdTech";
+require('dotenv').config()
+const mongostr = process.env.MONGO_URI;
 
 const connectToMongo = () => {
   mongoose.connect(mongostr, () => {

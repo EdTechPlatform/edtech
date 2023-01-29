@@ -14,7 +14,7 @@ const router = express.Router();
 
 // Test API
 router.get("/test", async (req, res) => {
-  res.send("Test Api");
+  res.send("Success Test Api");
 });
 
 // ROUTE 1:  User SignIn :POST

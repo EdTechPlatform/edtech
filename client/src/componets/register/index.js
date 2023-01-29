@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 const Index = () => {
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const [phone, setPhone] = useState("");
   const [dob, setDob] = useState("");
   const [gender, setGender] = useState("");
@@ -15,7 +15,7 @@ const navigate = useNavigate();
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
   const [pin, setPin] = useState("");
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("http://localhost:5000/users/register", {
@@ -24,7 +24,7 @@ const navigate = useNavigate();
         "Content-Type": "application/json",
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
-       jToken: localStorage.getItem("jToken"),
+        jToken: localStorage.getItem("jToken"),
       },
       body: JSON.stringify({
         dob: dob,
@@ -39,7 +39,6 @@ const navigate = useNavigate();
       }),
     });
     const json = await response.json();
-    // console.log(json);
     if (json.success === true) {
       setTimeout(() => {
         toast.success(
@@ -58,7 +57,7 @@ const navigate = useNavigate();
       });
     }
   }
- 
+
   return (
     <>
       <form method="POST" onSubmit={handleSubmit}>
@@ -233,8 +232,8 @@ const navigate = useNavigate();
 }
 
 export default Index
-  
 
 
- 
- 
+
+
+

@@ -2,6 +2,7 @@ const express = require("express");
 const formidable = require("express-formidable");
 const router = express.Router();
 const fetchuser = require("../middleware/fetchlogin");
+const fetchadmin = require("../middleware/fetchadmin");
 
 // controllers
 const {
@@ -16,7 +17,7 @@ const {
 } = require("../controllers/portfolioController");
 
 // ROUTE 1: Create Portfolio : POST
-router.post("/createportfolio", fetchuser, createPortfolio);
+router.post("/createportfolio", fetchadmin, createPortfolio);
 
 // ROUTE 1: Fetch All Portfolio : GET
 router.get("/allportfolio", allportfolio);
@@ -28,7 +29,7 @@ router.get("/allportfolio/:portfolioSlug", getportfolio);
 router.delete("/allportfolio/:portfolioSlug", deletePortfolio);
 
 // ROUTE 1: Create a Module for Specific Portfolio Using Slug : POST
-router.post("/addmodule/:portfolioSlug", fetchuser, addmodule);
+router.post("/addmodule/:portfolioSlug", fetchadmin, addmodule);
 
 // ROUTE 1: Get a Module for Specific Portfolio Using SLug : GET
 router.get("/getmodule/:portfolioSlug/:moduleNumber", getmodule);
@@ -37,6 +38,6 @@ router.get("/getmodule/:portfolioSlug/:moduleNumber", getmodule);
 router.put("/getmodule/:portfolioSlug/:moduleNumber", deletemodule);
 
 // ROUTE 1: Add a Video to a Module for Specific Portfolio Using SLug and Module Number : POST
-router.post("/addvideo/:portfolioSlug/:moduleNumber", fetchuser, formidable(), addVideo);
+router.post("/addvideo/:portfolioSlug/:moduleNumber", fetchadmin, formidable(), addVideo);
 
 module.exports = router;

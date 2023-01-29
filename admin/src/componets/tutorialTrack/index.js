@@ -2,16 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
 import Nav from '../nav'
+import Modal from '../modal/portfolioCreation.js'
 
 function Index() {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
+
   const allPortfilio = async () => {
     const response = await fetch("http://localhost:5000/edcourse/allportfolio", {
       method: "GET",
     });
     const json = await response.json();
     setData(json);
+  };
+
+  const delPortfilio = async (slug) => {
+    const response = await fetch(`http://localhost:5000/edcourse/allportfolio/${slug}`, {
+      method: "DELETE",
+    });
+    console.log("res => ", response);
   };
 
   useEffect(() => {
@@ -26,6 +35,7 @@ function Index() {
           <strong>Pick a Track</strong>
         </h1>
       </div>
+      <Modal />
       <div className="cards">
         {data &&
           data.map((tutorial) => {
@@ -39,6 +49,7 @@ function Index() {
                   <button className="btn btn-primary" onClick={() => navigate("/account/tutorial/tutorialPage", { state: { portfolioSlug: tutorial.portfolioSlug } })}>
                     Start Learning
                   </button>
+                  <button type="button" className="btn-close" aria-label="Close" onClick={() => delPortfilio(tutorial.portfolioSlug)}></button>
                 </div>
               </div>
             );

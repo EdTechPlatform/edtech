@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import "./consult.css";
 import Nav from "../nav";
 import { useNavigate } from "react-router-dom";
+import Modal from '../modal/moduleCreation'
 
 const TutorialPage = () => {
   const location = useLocation();
@@ -29,9 +30,11 @@ const TutorialPage = () => {
 
 
   const arr = data.modules;
+  // console.log(arr);
   return (
     <div>
       <Nav /><br />
+      <Modal />
 
       <div className="cards">
         <div className="card" key={data._id}>

@@ -17,7 +17,8 @@ const S3 = new AWS.S3(awsConfig);
 // Create Portfolio
 const createPortfolio = async (req, res) => {
   const { portfolioName, portfolioDescription } = req.body;
-  const useremail = req.email;
+  // const useremail = req.email;
+  const username = req.username;
   const portfolioSlug = slugify(req.body.portfolioName);
   try {
     const alreadyExist = await Portfolio.findOne({ portfolioSlug });
@@ -27,7 +28,7 @@ const createPortfolio = async (req, res) => {
       portfolioName,
       portfolioDescription,
       portfolioSlug,
-      portfolioCreator: useremail,
+      portfolioCreator: username,
     }).save();
 
     res.status(200).json(portfolio);
@@ -84,15 +85,15 @@ const deletemodule = async (req, res) => {
 // Add a new module
 const addmodule = async (req, res) => {
   const { moduleName, moduleNumber, moduleDescription } = req.body;
-  // const moduleSlug = slugify(req.body.moduleName);
-  const useremail = req.email;
+  const username = req.username;
+
   try {
     const portfolioSlug = req.params.portfolioSlug;
     const portfolio = await Portfolio.findOne({ portfolioSlug });
     if (!portfolio) {
       return res.status(400).send("Portfolio Not Found");
     }
-    if (useremail != portfolio.portfolioCreator) {
+    if (username != portfolio.portfolioCreator) {
       return res.status(400).send("Unauthorized");
     }
     const count = Object.keys(portfolio.modules).length;
@@ -124,13 +125,12 @@ const addmodule = async (req, res) => {
 // Add videos to specific module
 const addVideo = async (req, res) => {
   const { video } = req.files;
-  // console.log(video);
   if (!video) return res.status(400).send("No video");
 
   const videoTitle = video.name;
   const videoSlug = slugify(videoTitle, "_");
 
-  const useremail = req.email;
+  const username = req.username;
   try {
     const portfolioSlug = req.params.portfolioSlug;
     const i = req.params.moduleNumber;
@@ -139,7 +139,7 @@ const addVideo = async (req, res) => {
     if (!portfolio) {
       return res.status(400).send("Portfolio Not Found");
     }
-    if (useremail != portfolio.portfolioCreator) {
+    if (username != portfolio.portfolioCreator) {
       return res.status(400).send("Unauthorized");
     }
 
@@ -150,7 +150,7 @@ const addVideo = async (req, res) => {
 
     const videoCount = Object.keys(portfolio.modules[i - 1].videos).length;
     const videoNumber = videoCount + 1;
-    console.log(videoNumber);
+    // console.log(videoNumber);
     // video params
     const params = {
       Bucket: "ktms-edtech-dev",
