@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Modal from '../modal/videoUploader'
+import Modal from "../modal/videoUploader";
 import Nav from "../nav";
+import "./videoplayer.css";
 
 const ModuleVideoPage = () => {
   const location = useLocation();
@@ -11,7 +12,7 @@ const ModuleVideoPage = () => {
 
   useEffect(() => {
     getVideo();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getVideo = async () => {
@@ -31,16 +32,21 @@ const ModuleVideoPage = () => {
   return (
     <>
       <Nav />
-        {arr && arr.map((item) => {
+      <Modal />
+      {arr &&
+        arr.map((item) => {
           return (
             <>
               <div className="main" key={item._id}>
                 <div className="text">
-                  <h4 className="border border-3 text-left" onClick={() => setToggle(item._id)}>{item.videoTitle} </h4>
+                  <h4
+                    className="border border-3 text-left"
+                    onClick={() => setToggle(item._id)}
+                  >
+                    {item.videoTitle}
+                  </h4>
                   {toggle === item._id ? (
-                    <>
-                      {/* <p>{videoTitle}</p> */}
-                    </>
+                    <>{/* <p>{videoTitle}</p> */}</>
                   ) : null}
                 </div>
 
@@ -63,8 +69,8 @@ const ModuleVideoPage = () => {
             </>
           );
         })}
-      <Modal />
+      
     </>
   );
-}
+};
 export default ModuleVideoPage;
