@@ -1,0 +1,35 @@
+body{
+    background-color: #81CAD6;
+}
+.main-video{
+    cursor: pointer;
+
+    
+
+}
+
+.border {
+    padding-top:10px;
+    padding-bottom: 10px;
+
+}
+h2{
+    color: #ad074f; font-family: 'Raleway',sans-serif; font-size: 62px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: center; text-transform: uppercase; 
+}
+
+.watermark{
+    position: absolute;
+    left: 3%;
+    top:3%;
+    color:black;
+    animation: 15s moving-watermark infinite;
+}
+
+@keyframes moving-watermark {
+    0% {left:3%;top:3%;}
+    25% {left:93%;top:3%;}
+    50% {left:93%;top:93%;}
+    75% {left:3%;top:93%;}
+    100% {left:3%;top:3%;}
+
+}

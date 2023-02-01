@@ -1,0 +1,19 @@
+body{
+    background-color: #81CAD6;
+}
+.main-video{
+    cursor: pointer;
+
+    
+
+}
+
+.border {
+    padding-top:10px;
+    padding-bottom: 10px;
+
+}
+h2{
+    color: #ad074f; font-family: 'Raleway',sans-serif; font-size: 62px; font-weight: 800; line-height: 72px; margin: 0 0 24px; text-align: center; text-transform: uppercase; 
+}
+
