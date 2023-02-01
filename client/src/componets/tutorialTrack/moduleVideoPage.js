@@ -60,6 +60,7 @@ console.log(".11111....",arr);
                       src={item.videoLink}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       controls
+                      
                       controlsList="nodownload"
                     ></video>
                   </>
