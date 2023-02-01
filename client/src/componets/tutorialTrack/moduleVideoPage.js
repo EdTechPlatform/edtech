@@ -61,7 +61,7 @@ console.log(".11111....",arr);
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       controls
                       controlsList="nodownload"
-                    ></video><i className="watermark">Videoo</i>
+                    ></video>
                   </>
                 ) : null}
               </section>
