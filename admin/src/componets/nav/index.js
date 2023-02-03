@@ -9,7 +9,7 @@ function Nav(props) {
   const [usercred, setUserCred] = useState([]);
 
   const userdeatils = async () => {
-    const response = await fetch("http://localhost:5000/admin/getadmin", {
+    const response = await fetch("https://ed-tech-service-backend.onrender.com/admin/getadmin", {
       method: "GET",
       headers: {
         adminToken: localStorage.getItem("adminToken"),
@@ -23,7 +23,7 @@ function Nav(props) {
     userdeatils();
   }, []);
 
- 
+ console.log(usercred);
 
   const handleLogOut = () => {
     localStorage.ClearItem("adminToken");
@@ -137,7 +137,7 @@ function Nav(props) {
                   <Link
                     className="nav-link"
                     aria-current="page"
-                    to="/account/profile"
+                    to="/admin/profile"
                     style={{color:"black"}}
                   >
                     Profile
