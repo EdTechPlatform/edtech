@@ -32,6 +32,7 @@ const ModuleVideoPage = () => {
   return (
     <>
       <Nav />
+      <Modal/>
       <h2 className="text-capitalize">{datav.moduleName}</h2>
         {arr && arr.map((item) => {
           return (

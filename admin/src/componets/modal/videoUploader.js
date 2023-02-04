@@ -63,7 +63,7 @@ function VideoUpload() {
     return (
         <>
             <center>
-                <div className="btn-holder">
+                <div className="btn-holder" style={{paddingTop:"10px"}}>
                     <Button variant="primary" onClick={handleShow}>
                         + Add Video
                     </Button>

@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { LOGOUT } from "../../redux/const/actionsTypes";
-import './nav.css'
+import './nav.css';
+import { ToastContainer, toast } from "react-toastify";
 
 function Nav(props) {
   const navigate = useNavigate();
@@ -34,6 +35,16 @@ function Nav(props) {
     navigate("/");
   }
 
+  const validation = async(e) => {
+    e.preventDefault();
+    setTimeout(() => {
+      toast.warning("Do Sign In first", {
+          position: "top-center",
+      });
+  }, 1);
+  navigate("/");
+  }
+
   return (
     <>
 
@@ -46,7 +57,79 @@ function Nav(props) {
         <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul className="navbar-nav mr-auto">
+          {localStorage.getItem("jToken")?(
+             <ul className="navbar-nav mr-auto">
+             <li className="nav-item active">
+               <Link className="nav-link" to="/">
+                 Home
+               </Link>
+             </li>
+             <li className="nav-item">
+               <Link
+                 to="/account/tutorial"
+                 className="nav-link"
+                 aria-current="page"
+               >
+                 Tutorials
+               </Link>
+             </li>
+             <li className="nav-item">
+               <Link
+                 to="/account/testroute"
+                 className="nav-link"
+                 aria-current="page"
+               >
+                 Resources
+               </Link>
+             </li>
+             <li className="nav-item">
+               <Link
+                 to="/account/testroute"
+                 className="nav-link"
+                 aria-current="page"
+               >
+                 Community
+               </Link>
+             </li>
+             <li className="nav-item">
+               <Link
+                 to="/account/testroute"
+                 className="nav-link"
+                 aria-current="page"
+               >
+                 P2P_Mock
+               </Link>
+             </li>
+             <li className="nav-item">
+               <Link
+                 to="/account/testroute"
+                 className="nav-link"
+                 aria-current="page"
+               >
+                 Events
+               </Link>
+             </li>
+             <li className="nav-item">
+               <Link
+                 to="/account/testroute"
+                 className="nav-link"
+                 aria-current="page"
+               >
+                 Competitions
+               </Link>
+             </li>
+             <li className="nav-item">
+               <Link
+                 to="/account/testroute"
+                 className="nav-link"
+                 aria-current="page"
+               >
+                 Career_Roadmap
+               </Link>
+             </li>
+             </ul>
+          ):(
+            <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
               <Link className="nav-link" to="/">
                 Home
@@ -54,7 +137,8 @@ function Nav(props) {
             </li>
             <li className="nav-item">
               <Link
-                to="/account/tutorial"
+                to="/"
+                onClick={validation}
                 className="nav-link"
                 aria-current="page"
               >
@@ -116,6 +200,8 @@ function Nav(props) {
               </Link>
             </li>
             </ul>
+          )}
+          
           </div>
           <div 
           className=" d-flex flex-row-reverse me-4"
@@ -168,6 +254,7 @@ function Nav(props) {
             </button>
           )}
         </div>
+        <ToastContainer/>
         </div>
       </nav>
     </>
