@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Nav from "../nav";
-import "./videoplayer.css";
+import './videoplayer.css';
 
 
 const ModuleVideoPage = () => {
@@ -28,6 +28,7 @@ const ModuleVideoPage = () => {
     setDatav(json);
   };
 
+  
   const arr = datav.videos;
 console.log(".....",datav);
 console.log(".11111....",arr);

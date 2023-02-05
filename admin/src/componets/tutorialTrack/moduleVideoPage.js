@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Modal from '../modal/videoUploader'
+import Modal from "../modal/videoUploader";
 import Nav from "../nav";
 import "./videoplayer.css";
 
@@ -12,8 +12,8 @@ const ModuleVideoPage = () => {
 
   useEffect(() => {
     getVideo();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },);
 
   const getVideo = async () => {
     const response = await fetch(
@@ -32,6 +32,7 @@ const ModuleVideoPage = () => {
   return (
     <>
       <Nav />
+      <Modal/>
       <h2 className="text-capitalize">{datav.moduleName}</h2>
         {arr && arr.map((item) => {
           return (
@@ -40,9 +41,7 @@ const ModuleVideoPage = () => {
               <section className="main-video shadow-sm p-3 bg-white mb-5 rounded hover-shadow">
               <h4 className="text-capitalize text-center" onClick={() => setToggle(item._id)}>{item.videoTitle.slice(0,item.videoTitle.length-4)} </h4>
                   {toggle === item._id ? (
-                    <>
-                      {/* <p>{videoTitle}</p> */}
-                    </>
+                    <>{/* <p>{videoTitle}</p> */}</>
                   ) : null}
                 </section>
 
@@ -66,8 +65,8 @@ const ModuleVideoPage = () => {
             </>
           );
         })}
-      <Modal />
+      
     </>
   );
-}
+};
 export default ModuleVideoPage;
