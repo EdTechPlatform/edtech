@@ -13,7 +13,7 @@ function index() {
           Record_home.map((record) => {
             return (
               <span className="home-body" key={record.id}>
-                <img src={record.source} alt=""  className="video"/>
+                <video src={record.source} alt=""  className="video"/>
               </span>
             );
           })}

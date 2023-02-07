@@ -1,19 +1,19 @@
 [
     {
         "id": 1,
-        "source": "./assets/videoimg.jpg"
+        "source": "./video.MP4"
     },
     {
         "id": 2,
-        "source": "./assets/videoimg.jpg"
+        "source": "./video.MP4"
     },
     {
         "id": 3,
-        "source": "./assets/videoimg.jpg"
+        "source": "./video.MP4"
     },
     {
         "id": 4,
-        "source": "./assets/videoimg.jpg"
+        "source": "./video.MP4"
     }
 
 ]
