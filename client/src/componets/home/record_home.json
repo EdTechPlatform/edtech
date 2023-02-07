@@ -1,5 +1,6 @@
 [
     {
+<<<<<<< HEAD
         "id": 1,
         "source": "./video.MP4"
     },
@@ -14,6 +15,22 @@
     {
         "id": 4,
         "source": "./video.MP4"
+=======
+      "id": 1,
+      "source": "./assets/demovideo.mp4"
+    },
+    {
+      "id": 2,
+      "source": "./assets/demovideo.mp4"
+    },
+    {
+      "id": 3,
+      "source": "./assets/demovideo.mp4"
+    },
+    {
+      "id": 4,
+      "source": "./assets/demovideo.mp4"
+>>>>>>> 83d917de05ea9fb47855b928519f21b720f35830
     }
-
-]
+  ]
+  

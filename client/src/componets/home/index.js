@@ -12,6 +12,7 @@ import "react-html5video/dist/styles.css";
 function index() {
   return (
     <>
+<<<<<<< HEAD
       <Nav />
       <div>
         <div className="home">
@@ -44,6 +45,28 @@ function index() {
               );
             })}
         </div>
+=======
+    <Nav/>
+    <div>
+     <div className="home">
+        {Record_home &&
+          Record_home.map((record) => {
+            return (
+              <span className="home-body" key={record.id}>
+                {/* <img src={record.source} alt=""  className="video"/> */}
+                <video
+                        width="100%"
+                        height="100%"
+                        src={record.source}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        controls
+                        controlsList="nodownload"
+                      ></video>
+              </span>
+            );
+          })}
+>>>>>>> 83d917de05ea9fb47855b928519f21b720f35830
       </div>
     </>
   );
