@@ -46,19 +46,6 @@ function VideoUpload() {
         );
         setUploadButtonText("Video Uploaded");
         const json = await response.json();
-
-        if (json.success === true) {
-            setTimeout(() => {
-                toast.success("Video Uploaded Successfully", {
-                    position: "top-center",
-                });
-            }, 100);
-            setTimeout(() => {
-                navigate("/account/tutorial/tutorialPage/modulevideo", { replace: true });
-                setUploadButtonText("Upload Video");
-            }, 2000);
-        }
-
         console.log(json.success)
 
         setTimeout(() => {

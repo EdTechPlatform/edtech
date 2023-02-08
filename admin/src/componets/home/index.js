@@ -13,9 +13,6 @@ function index() {
           Record_home.map((record) => {
             return (
               <span className="home-body" key={record.id}>
-<<<<<<< HEAD
-                <video src={record.source} alt=""  className="video"/>
-=======
                 {/* <img src={record.source} alt=""  className="video"/> */}
                 <video
                         width="100%"
@@ -26,7 +23,6 @@ function index() {
                         controls
                         controlsList="nodownload"
                       ></video>
->>>>>>> 83d917de05ea9fb47855b928519f21b720f35830
               </span>
             );
           })}
