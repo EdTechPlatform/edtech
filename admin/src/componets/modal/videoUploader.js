@@ -14,7 +14,7 @@ function VideoUpload() {
     const portfolioSlug = location.state.portfolioSlug;
     const moduleNumber = location.state.moduleNumber;
     const [uploadButtonText, setUploadButtonText] = useState("Upload Video");
-    const [progress, setProgress] = useState();
+    const [progress, setProgress] = useState(0);
     const [file, setFile] = useState(null);
     // 
     const [show, setShow] = useState(false);
@@ -46,6 +46,19 @@ function VideoUpload() {
         );
         setUploadButtonText("Video Uploaded");
         const json = await response.json();
+
+        if (json.success === true) {
+            setTimeout(() => {
+                toast.success("Video Uploaded Successfully", {
+                    position: "top-center",
+                });
+            }, 100);
+            setTimeout(() => {
+                navigate("/account/tutorial/tutorialPage/modulevideo", { replace: true });
+                setUploadButtonText("Upload Video");
+            }, 2000);
+        }
+
         console.log(json.success)
 
         setTimeout(() => {
@@ -58,6 +71,7 @@ function VideoUpload() {
             // navigate("/account/tutorial/tutorialPage/modulevideo", { replace: true });
             setUploadButtonText("Upload Video");
         }, 2000);
+
 
     };
     return (

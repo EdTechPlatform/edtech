@@ -1,0 +1,27 @@
+[
+    {
+        "id":1,
+        "title":"CONSULT",
+        "content":"in collaboration with IIM Ahemdabad Consult Club",
+        "path":"/account/tutorial/consult"
+    },
+    {
+        "id":2,
+        "title":"PRODUCT MANAGEMENT",
+        "content":"in collaboration with IIM Ahemdabad Product Club",
+        "path":"/account/tutorial/consult"
+    },
+    {
+        "id":3,
+        "title":"MARKETING",
+        "content":"in collaboration with IIM Ahemdabad Marketing Club",
+        "path":"/account/tutorial/consult"
+    },
+    {
+        "id":4,
+        "title":"FINANCE",
+        "content":"in collaboration with IIM Ahemdabad Finance Club",
+        "path":"/account/tutorial/consult"
+    }
+
+]
