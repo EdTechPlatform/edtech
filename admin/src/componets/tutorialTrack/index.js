@@ -1,33 +1,56 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
-import Nav from '../nav'
-import Modal from '../modal/portfolioCreation.js'
+import Nav from "../nav";
+import Modal from "../modal/portfolioCreation.js";
 // import { ToastContainer, toast } from "react-toastify";
 
 function Index() {
   const [data, setData] = useState([]);
+  const [usercred, setUserCred] = useState([]);
   const navigate = useNavigate();
 
   const allPortfilio = async () => {
-    const response = await fetch("https://ed-tech-service-backend.onrender.com/edcourse/allportfolio", {
-      method: "GET",
-    });
+    const response = await fetch(
+      "https://ed-tech-service-backend.onrender.com/edcourse/allportfolio",
+      {
+        method: "GET",
+      }
+    );
     const json = await response.json();
     setData(json);
   };
 
   const delPortfilio = async (slug) => {
-    const response = await fetch(`https://ed-tech-service-backend.onrender.com/edcourse/allportfolio/${slug}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://ed-tech-service-backend.onrender.com/edcourse/allportfolio/${slug}`,
+      {
+        method: "DELETE",
+      }
+    );
     console.log("res => ", response);
+  };
+
+  const userdeatils = async () => {
+    const response = await fetch(
+      "https://ed-tech-service-backend.onrender.com/admin/getadmin",
+      {
+        method: "GET",
+        headers: {
+          adminToken: localStorage.getItem("adminToken"),
+        },
+      }
+    );
+    const json = await response.json();
+    setUserCred(json);
   };
 
   useEffect(() => {
     allPortfilio();
+    userdeatils();
   }, []);
-  console.log(data)
+
+  console.log(data);
   function refreshPage() {
     // setTimeout(() => {
     //   toast.success("Portfolio Deleted", {
@@ -56,10 +79,30 @@ function Index() {
                     <strong>{tutorial.portfolioName}</strong>
                   </h5>
                   <p className="card-text">{tutorial.portfolioDescription}</p>
-                  <button className="btn btn-primary" onClick={() => { navigate("/account/tutorial/tutorialPage", { state: { portfolioSlug: tutorial.portfolioSlug } }); refreshPage() }}>
-                    Start Learning
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      navigate("/account/tutorial/tutorialPage", {
+                        state: { portfolioSlug: tutorial.portfolioSlug },
+                      });
+                    }}
+                  >
+                    View
                   </button>
-                  <button type="button" className="btn-close" aria-label="Close" onClick={() => { delPortfilio(tutorial.portfolioSlug); refreshPage() }} ></button>
+                  {usercred.useremail === tutorial.portfolioCreator ? (
+                    <button
+                      type="button"
+                      className="btn-close"
+                      aria-label="Close"
+                      onClick={() => {
+                        delPortfilio(tutorial.portfolioSlug);
+                        refreshPage();
+                      }}
+                    ></button>
+                  ) : (
+                    ""
+                  )}
+
                   <p> Created By : {tutorial.portfolioCreator}</p>
                 </div>
               </div>

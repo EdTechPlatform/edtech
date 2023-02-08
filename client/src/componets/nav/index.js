@@ -35,14 +35,14 @@ function Nav(props) {
     navigate("/");
   }
 
-  const validation = async(e) => {
+  const validation = async (e) => {
     e.preventDefault();
     setTimeout(() => {
       toast.warning("Do Sign In first", {
-          position: "top-center",
+        position: "top-center",
       });
-  }, 1);
-  navigate("/");
+    }, 1);
+    navigate("/");
   }
 
   return (
@@ -148,6 +148,7 @@ function Nav(props) {
             <li className="nav-item">
               <Link
                 to="/account/testroute"
+                onClick={validation}
                 className="nav-link"
                 aria-current="page"
               >
@@ -157,6 +158,7 @@ function Nav(props) {
             <li className="nav-item">
               <Link
                 to="/account/testroute"
+                onClick={validation}
                 className="nav-link"
                 aria-current="page"
               >
@@ -166,6 +168,7 @@ function Nav(props) {
             <li className="nav-item">
               <Link
                 to="/account/testroute"
+                onClick={validation}
                 className="nav-link"
                 aria-current="page"
               >
@@ -175,6 +178,7 @@ function Nav(props) {
             <li className="nav-item">
               <Link
                 to="/account/testroute"
+                onClick={validation}
                 className="nav-link"
                 aria-current="page"
               >
@@ -184,6 +188,7 @@ function Nav(props) {
             <li className="nav-item">
               <Link
                 to="/account/testroute"
+                onClick={validation}
                 className="nav-link"
                 aria-current="page"
               >
@@ -193,6 +198,7 @@ function Nav(props) {
             <li className="nav-item">
               <Link
                 to="/account/testroute"
+                onClick={validation}
                 className="nav-link"
                 aria-current="page"
               >
