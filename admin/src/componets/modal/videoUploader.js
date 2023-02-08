@@ -14,7 +14,7 @@ function VideoUpload() {
     const portfolioSlug = location.state.portfolioSlug;
     const moduleNumber = location.state.moduleNumber;
     const [uploadButtonText, setUploadButtonText] = useState("Upload Video");
-    const [progress, setProgress] = useState(0);
+    const [progress, setProgress] = useState();
     const [file, setFile] = useState(null);
     // 
     const [show, setShow] = useState(false);
