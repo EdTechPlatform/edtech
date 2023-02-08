@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { LOGOUT } from "../../redux/const/actionsTypes";
+import "react-toastify/dist/ReactToastify.css";
 import './nav.css';
 import { ToastContainer, toast } from "react-toastify";
 
