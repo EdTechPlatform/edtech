@@ -7,6 +7,12 @@
     padding: 10px;
     font-size:17px;
 }
+
+.navbar-link--active {
+    border-bottom: 3px solid #29b6f6;
+    transition: border-bottom .5s ease-in-out;
+  }
+
 .navbar-brand{
     color: white;
     padding:5px;

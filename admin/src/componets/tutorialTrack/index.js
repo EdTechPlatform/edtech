@@ -48,6 +48,7 @@ function Index() {
   useEffect(() => {
     allPortfilio();
     userdeatils();
+
   }, []);
 
   console.log(data);

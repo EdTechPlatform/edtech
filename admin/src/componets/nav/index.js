@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import './nav.css';
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { NavLink } from 'react-router-dom';
 
 function Nav(props) {
   const navigate = useNavigate();
@@ -55,150 +57,151 @@ function Nav(props) {
             {localStorage.getItem("adminToken") ? (
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
-                  <Link className="nav-link" to="/">
+                  <NavLink exact activeClassName="navbar-link--active" className="nav-link" to="/">
                     Home
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link
+                  <NavLink
                     to="/account/tutorial"
                     className="nav-link"
                     aria-current="page"
+                    activeClassName="navbar-link--active"
                   >
                     Tutorials
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link
+                 <NavLink activeClassName="navbar-link--active"
                     to="/account/testroute"
                     className="nav-link"
                     aria-current="page"
                   >
                     Resources
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link
+                  <NavLink activeClassName="navbar-link--active"
                     to="/account/testroute"
                     className="nav-link"
                     aria-current="page"
                   >
                     Community
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link
+                  <NavLink activeClassName="navbar-link--active"
                     to="/account/testroute"
                     className="nav-link"
                     aria-current="page"
                   >
                     P2P_Mock
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link
+                  <NavLink activeClassName="navbar-link--active"
                     to="/account/testroute"
                     className="nav-link"
                     aria-current="page"
                   >
                     Events
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link
+                  <NavLink activeClassName="navbar-link--active"
                     to="/account/testroute"
                     className="nav-link"
                     aria-current="page"
                   >
                     Competitions
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link
+                  <NavLink activeClassName="navbar-link--active"
                     to="/account/testroute"
                     className="nav-link"
                     aria-current="page"
                   >
                     Career_Roadmap
-                  </Link>
+                  </NavLink>
                 </li>
               </ul>
             ) : (
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
-                  <Link className="nav-link" to="/">
+                  <NavLink activeClassName="navbar-link--active" className="nav-link" to="/">
                     Home
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link
-                    to="/"
+                  <NavLink activeClassName="navbar-link--active"
+                    to="/account/tutorial"
                     onClick={validation}
                     className="nav-link"
                     aria-current="page"
                   >
                     Tutorials
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link
+                  <NavLink activeClassName="navbar-link--active"
                     to="/account/testroute"
                     onClick={validation}
                     className="nav-link"
                     aria-current="page"
                   >
                     Resources
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link
+                  <NavLink activeClassName="navbar-link--active"
                     to="/account/testroute"
                     onClick={validation}
                     className="nav-link"
                     aria-current="page"
                   >
                     Community
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link
+                  <NavLink activeClassName="navbar-link--active"
                     to="/account/testroute"
                     onClick={validation}
                     className="nav-link"
                     aria-current="page"
                   >
                     P2P_Mock
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link
+                  <NavLink activeClassName="navbar-link--active"
                     to="/account/testroute"
                     onClick={validation}
                     className="nav-link"
                     aria-current="page"
                   >
                     Events
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link
+                  <NavLink activeClassName="navbar-link--active"
                     to="/account/testroute"
                     onClick={validation}
                     className="nav-link"
                     aria-current="page"
                   >
                     Competitions
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link
+                  <NavLink activeClassName="navbar-link--active"
                     to="/account/testroute"
                     onClick={validation}
                     className="nav-link"
                     aria-current="page"
                   >
                     Career_Roadmap
-                  </Link>
+                  </NavLink>
                 </li>
               </ul>
             )}
