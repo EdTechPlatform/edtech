@@ -21,6 +21,7 @@ function Index() {
         setShow(false);
     };
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const response = await fetch(
@@ -51,6 +52,8 @@ function Index() {
                 navigate("/account/tutorial/tutorialPage", { replace: true });
             }, 2000);
         }
+
+        window.location.reload(false);
     };
     return (
         <>
