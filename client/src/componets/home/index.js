@@ -1,7 +1,10 @@
-import React from 'react';
+import React from "react";
 import Record_home from "./record_home.json";
-import './home.css';
-import Nav from '../nav';
+import "./home.css";
+import Nav from "../nav";
+
+
+
 
 function index() {
   return (
@@ -27,10 +30,9 @@ function index() {
             );
           })}
       </div>
-    </div>
-      
+      </div>
     </>
-  )
+  );
 }
 
-export default index ;
+export default index;
