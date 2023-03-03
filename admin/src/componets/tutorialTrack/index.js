@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "./index.css";
 import Nav from "../nav";
 import Modal from "../modal/portfolioCreation.js";
-// import { ToastContainer, toast } from "react-toastify";
 
 function Index() {
   const [data, setData] = useState([]);
@@ -50,16 +49,6 @@ function Index() {
     userdeatils();
   }, []);
 
-  console.log(data);
-  function refreshPage() {
-    // setTimeout(() => {
-    //   toast.success("Portfolio Deleted", {
-    //     position: "top-center",
-    //   });
-    // }, 1);
-    window.location.reload(false);
-  }
-
   return (
     <>
       <Nav />
@@ -94,10 +83,7 @@ function Index() {
                       type="button"
                       className="btn-close"
                       aria-label="Close"
-                      onClick={() => {
-                        delPortfilio(tutorial.portfolioSlug);
-                        refreshPage();
-                      }}
+                      onClick={() => { delPortfilio(tutorial.portfolioSlug); }}
                     ></button>
                   ) : (
                     ""
@@ -109,7 +95,6 @@ function Index() {
             );
           })}
       </div>
-      {/* <ToastContainer /> */}
     </>
   );
 }

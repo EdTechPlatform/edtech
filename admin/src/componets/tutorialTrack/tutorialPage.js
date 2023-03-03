@@ -46,7 +46,6 @@ const TutorialPage = () => {
 
   const arr = data.modules;
 
-  // console.log(arr);
   return (
     <div>
       <Nav />
